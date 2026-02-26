@@ -12,7 +12,6 @@ const lang = getLangFromUrl(Astro.url);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/public/assets/icons/logo-icon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Jarol Gabriel | Full Stack Developer</title>
@@ -23,8 +22,7 @@ const lang = getLangFromUrl(Astro.url);
 		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<script is:inline>
 		// mode dark alway for load
-		const theme = localStorage.getItem('theme') || 'dark';
-		document.documentElement.classList.add(theme);
+		document.documentElement.classList.add('dark');
 		</script>
 	</head>
 	<body>
