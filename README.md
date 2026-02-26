@@ -1,12 +1,15 @@
 # Personal Portfolio | Jarol Gabriel DEV
 
-`![Portfolio Preview](/assets/images/portfolio_jarol.png)`
+![Portfolio Preview](./public/assets/images/portfolio_jarol.png)
 
 A modern, high-performance personal portfolio built with **Astro 5** and
 **Tailwind CSS 4**. This project showcases my work, services, and technical
 expertise as a Full Stack Developer.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://YOUR-DEPLOYMENT-LINK-HERE.com)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://portfolio-lake-three-43.vercel.app/)
+
+![Astro](https://img.shields.io/badge/astro-%23333333.svg?style=for-the-badge&logo=astro&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ---
 
@@ -64,7 +67,7 @@ npm run build
 
 🔗 Live Link
 You can visit the live version of this portfolio here:
-👉 https://YOUR-DEPLOYMENT-LINK-HERE.com
+👉 https://portfolio-lake-three-43.vercel.app
 
 👤 Author
 Jarol Gabriel

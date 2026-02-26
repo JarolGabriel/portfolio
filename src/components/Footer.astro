@@ -35,8 +35,8 @@ const services = [
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left z-10">
         <div class="flex items-center gap-3 mb-6">
           <img src="/assets/icons/logo-icon.svg" alt="Logo" class="w-8 h-8" />
-          <span class="text-white font-montserrat font-medium text-xl tracking-tight">
-            Jarol Gabriel <span class="text-accent">DEV</span>
+          <span class="text-[var(--color-heading)] font-montserrat font- text-xl tracking-tight">
+            Jarol Gabriel <span class="text-accent font-bold">DEV</span>
           </span>
         </div>
 
@@ -52,7 +52,7 @@ const services = [
           <div class="h-[1px] w-10 bg-[var(--color-yellow)] opacity-50"></div>
           <div class="flex gap-4">
             {[1, 2, 3].map(() => (
-              <div class="w-8 h-8 rounded-full border border-purple-500/50 flex items-center justify-center text-white bg-transparent">
+              <div class="w-8 h-8 rounded-full border flex items-center justify-center text-accent2 bg-transparent">
                 <Check size={16} strokeWidth={3} />
               </div>
             ))}
@@ -91,7 +91,7 @@ const services = [
 <div>
   <h4 class="text-accent font-menu mb-6 text-lg lowercase">{t('footer.contact')}</h4>
   
-  <ul class="flex flex-col gap-6 items-start">
+  <ul class="flex flex-col text-white/60 gap-6 items-start">
     <li>
       <a href="https://wa.me/001234567" target="_blank" rel="noopener noreferrer" 
          class="social-link" aria-label="WhatsApp">
@@ -146,7 +146,7 @@ const services = [
 
 <style>
   .social-link {
-    color: #9ca3af; /* Gris suave por defecto */
+    color: #9ca3af;
     transition: all 0.3s ease;
     display: flex;
     align-items: left;
