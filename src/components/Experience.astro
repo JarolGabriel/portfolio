@@ -1,0 +1,268 @@
+---
+import Container from './Container.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const experiences = [
+  {
+    period: t('experience.item1.period'),
+    role: t('experience.item1.role'),
+    position: t('experience.item1.position'),
+    company: '',
+    side: 'right',
+    highlight: true
+  },
+  {
+    period: t('experience.item2.period'),
+    role: t('experience.item2.role'),
+    company: t('experience.item2.company'),
+    position: '',
+    side: 'left',
+    highlight: false
+  },
+  {
+    period: t('experience.item3.period'),
+    role: t('experience.item3.role'),
+    position: t('experience.item3.position'),
+    company: '',
+    side: 'right',
+    highlight: false
+  },
+  {
+    period: t('experience.item4.period'),
+    role: t('experience.item4.role'),
+    position: t('experience.item4.position'),
+    company: '',
+    side: 'left',
+    highlight: false
+  }
+];
+---
+
+<section id="experience" class="relative py-16 md:py-24">
+  <!-- waves -->
+  <div class="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none">
+    <img 
+      src="/assets/icons/bg-waves.svg" 
+      alt="" 
+      class="w-full h-full object-cover object-center"
+    />
+  </div>
+
+  <Container>
+    <div class="flex flex-col items-center text-center space-y-8 md:space-y-12">
+      
+      <!-- Title -->
+      <h2 class="text-accent text-[26] md:text-2xl font-menu">
+        {t('experience.title')}
+      </h2>
+
+      <!-- Description -->
+      <p class="text-heading text-base md:text-lg max-w-4xl leading-relaxed font-light">
+        {t('experience.description')}
+      </p>
+
+      <!-- Timeline -->
+      <div class="relative w-full max-w-5xl mt-12">
+        
+        <!-- Vertical line with gradient -->
+        <div class="timeline-line"></div>
+
+        <!-- Timeline items -->
+        <div class="space-y-12 md:space-y-16">
+          {experiences.map((exp, index) => (
+            <div class={`timeline-item ${exp.side === 'left' ? 'timeline-left' : 'timeline-right'}`}>
+              
+              {/* <!-- Mobile layout (everything on right) --> */}
+              <div class="md:hidden flex gap-6">
+                <div class="flex flex-col items-center">
+                  <div class="timeline-dot"></div>
+                </div>
+                <div class="flex-1 text-left pb-8">
+                  <p class={exp.highlight ? 'timeline-period-highlight' : 'timeline-period'}>
+                    {exp.period}
+                  </p>
+                  <h3 class={exp.highlight ? 'timeline-role-highlight' : 'timeline-role'}>
+                    {exp.role}
+                  </h3>
+                  {exp.position && (
+                    <h4 class={exp.highlight ? 'timeline-position-highlight' : 'timeline-position'}>
+                      {exp.position}
+                    </h4>
+                  )}
+                  {exp.company && (
+                    <p class="timeline-company">{exp.company}</p>
+                  )}
+                </div>
+              </div>
+
+              <!-- Desktop layout (alternating sides) -->
+              <div class="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8 items-center">
+                
+                {exp.side === 'left' ? (
+                  <>
+                    <!-- Left content -->
+                    <div class="text-right">
+                      <p class={exp.highlight ? 'timeline-period-highlight' : 'timeline-period'}>
+                        {exp.period}
+                      </p>
+                      <h3 class={exp.highlight ? 'timeline-role-highlight' : 'timeline-role'}>
+                        {exp.role}
+                      </h3>
+                      {exp.position && (
+                        <h4 class={exp.highlight ? 'timeline-position-highlight' : 'timeline-position'}>
+                          {exp.position}
+                        </h4>
+                      )}
+                      {exp.company && (
+                        <p class="timeline-company">{exp.company}</p>
+                      )}
+                    </div>
+                    
+                    <!-- Center dot -->
+                    <div class="timeline-dot"></div>
+                    
+                    <!-- Right empty -->
+                    <div></div>
+                  </>
+                ) : (
+                  <>
+                    <!-- Left empty -->
+                    <div></div>
+                    
+                    <!-- Center dot -->
+                    <div class="timeline-dot"></div>
+                    
+                    <!-- Right content -->
+                    <div class="text-left">
+                      <p class={exp.highlight ? 'timeline-period-highlight' : 'timeline-period'}>
+                        {exp.period}
+                      </p>
+                      <h3 class={exp.highlight ? 'timeline-role-highlight' : 'timeline-role'}>
+                        {exp.role}
+                      </h3>
+                      {exp.position && (
+                        <h4 class={exp.highlight ? 'timeline-position-highlight' : 'timeline-position'}>
+                          {exp.position}
+                        </h4>
+                      )}
+                      {exp.company && (
+                        <p class="timeline-company">{exp.company}</p>
+                      )}
+                    </div>
+                  </>
+                )}
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+  </Container>
+</section>
+
+<style>
+  .timeline-line {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-accent), #4a4a4a, #1a1a1a);
+  }
+
+  @media (min-width: 768px) {
+    .timeline-line {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    border: 3px solid var(--color-bg);
+    position: relative;
+    z-index: 10;
+    flex-shrink: 0;
+  }
+
+  .timeline-period {
+    font-family: var(--font-menu);
+    font-size: 16px;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-period-highlight {
+    font-family: var(--font-menu);
+    font-size: 16px;
+    color: var(--color-accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-role {
+    font-family: var(--font-menu);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-role-highlight {
+    font-family: var(--font-menu);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-position {
+    font-family: var(--font-menu);
+    font-size: 14px;
+    color: var(--color-text);
+    opacity: 0.8;
+  }
+
+  .timeline-position-highlight {
+    font-family: var(--font-menu);
+    font-size: 14px;
+    color: var(--color-accent);
+  }
+
+  .timeline-company {
+    font-family: var(--font-menu);
+    font-size: 12px;
+    color: var(--color-text);
+    opacity: 0.7;
+    margin-top: 0.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .timeline-period,
+    .timeline-period-highlight {
+      font-size: 16px;
+    }
+
+    .timeline-role,
+    .timeline-role-highlight {
+      font-size: 20px;
+    }
+
+    .timeline-position,
+    .timeline-position-highlight {
+      font-size: 16px;
+    }
+
+    .timeline-company {
+      font-size: 14px;
+    }
+  }
+</style>

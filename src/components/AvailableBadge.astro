@@ -1,0 +1,28 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="relative inline-flex items-center group">
+  <div class=" 
+    w-35 h-8.5
+    relative md:w-[211.59px] md:h-12
+    rounded-xl border-2 border-transparent 
+    bg-clip-border 
+    [background:linear-gradient(var(--color-bg),var(--color-bg))_padding-box,linear-gradient(to_left,#F7E97C,#0F0F0F)_border-box]
+  ">
+    <div class=" w-full h-full flex items-center justify-center">
+      <span class="text-[12px] font-menu md:text-[15px] font-light text-[--color-text] hover:text-accent transition-colors duration-300 tracking-wide cursor-pointer" >  
+        {t('hero.available')}
+      </span>
+    </div>
+  </div>
+
+  <div class="absolute -right-2 flex h-4 w-4">
+    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400/50"></span>
+    <span class="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-[--color-bg]"></span>
+  </div>
+</div>
+
+

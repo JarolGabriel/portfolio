@@ -1,0 +1,141 @@
+---
+import Container from './Container.astro';
+import TestimonialCard from './TestimonialCard.astro';
+import { ChevronLeft, ChevronRight } from 'lucide-astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const testimonials = [
+  { name: t('testimonials.client1.name'), role: t('testimonials.client1.role'), content: t('testimonials.client1.testimonial'), avatar: "/assets/images/perfil_2.png" },
+  { name: t('testimonials.client2.name'), role: t('testimonials.client2.role'), content: t('testimonials.client2.testimonial'), avatar: "/assets/images/perfil_3_girl.png" },
+  { name: t('testimonials.client3.name'), role: t('testimonials.client3.role'), content: t('testimonials.client3.testimonial'), avatar: "/assets/images/perfil_Girl1.png" },
+  { name: t('testimonials.client4.name'), role: t('testimonials.client4.role'), content: t('testimonials.client4.testimonial'), avatar: "/assets/images/perfil_2.png" },
+  { name: t('testimonials.client5.name'), role: t('testimonials.client5.role'), content: t('testimonials.client5.testimonial'), avatar: "/assets/images/perfil_3_girl.png" },
+];
+---
+
+<section id="testimonials" class="relative py-16 overflow-hidden">
+  <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <img src="/assets/icons/bg-waves.svg" alt="" class="w-full h-full object-cover" />
+  </div>
+
+  <Container>
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 items-start">
+      
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left z-20">
+        <img src="/assets/icons/comillas_57.png" alt="quote" class="w-10 mb-6" />
+        <h2 class="text-accent text-xl lg:text-xl font-menu lowercase mb-1">
+          {t('testimonials.title')}
+        </h2>
+        <h3 class="text-heading text-2xl md:text-2xl lg:text-2xl font-heading font-medium mb-6 max-w-xs lg:max-w-sm leading-snug">
+          {t('testimonials.subtitle')}
+        </h3>
+
+        <div class="flex gap-2 mt-4 mb-8" id="dots-container">
+          {testimonials.map((_, i) => (
+            <div class={`dot w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-[var(--color-yellow)]' : 'bg-gray-400'}`}></div>
+          ))}
+        </div>
+
+        <div class="hidden lg:flex gap-3">
+          <button id="test-prev" class="nav-arrow"><ChevronLeft size={18} /></button>
+          <button id="test-next" class="nav-arrow"><ChevronRight size={18} /></button>
+        </div>
+      </div>
+
+      <div class="relative w-full group">
+        <div class="flex lg:hidden absolute inset-y-0 -left-6 -right-6 md:-left-6 md:-right-6 z-30 items-center justify-between pointer-events-none">
+          <button id="test-prev-mob" class="nav-arrow pointer-events-auto bg-[var(--color-bg)] shadow-md"><ChevronLeft size={16} /></button>
+          <button id="test-next-mob" class="nav-arrow pointer-events-auto bg-[var(--color-bg)] shadow-md"><ChevronRight size={16} /></button>
+        </div>
+
+        <div class="overflow-hidden"> 
+          <div class="flex transition-transform duration-500 ease-out" id="testimonial-track">
+            {testimonials.map((item) => (
+              
+              <div class="flex-shrink-0 w-full lg:w-1/2 flex justify-center px-4 lg:px-0"> 
+                <TestimonialCard {...item} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .nav-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .nav-arrow:hover:not(:disabled), .nav-arrow:active:not(:disabled) {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  .nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  .dot { cursor: pointer; }
+</style>
+
+<script>
+  const track = document.getElementById('testimonial-track');
+  const dots = document.querySelectorAll('.dot');
+  const btns = [
+    document.getElementById('test-prev'), 
+    document.getElementById('test-next'),
+    document.getElementById('test-prev-mob'),
+    document.getElementById('test-next-mob')
+  ];
+  
+  let currentIndex = 0;
+  const total = 5;
+
+  function update() {
+    if (!track) return;
+   const isDesktop = window.innerWidth >= 1024;
+    const move = isDesktop ? 50 : 100;
+    track.style.transform = `translateX(-${currentIndex * move}%)`;
+
+    dots.forEach((dot, i) => {
+      (dot as HTMLElement).style.backgroundColor = (i === currentIndex) ? 'var(--color-yellow)' : '#9ca3af';
+    });
+
+    const prevs = [btns[0], btns[2]];
+    const nexts = [btns[1], btns[3]];
+    
+    prevs.forEach(b => { if(b) (b as HTMLButtonElement).disabled = currentIndex === 0 });
+    nexts.forEach(b => { if(b) (b as HTMLButtonElement).disabled = isDesktop ? (currentIndex === total - 1) : (currentIndex >= total - 2) });
+  }
+
+  [btns[1], btns[3]].forEach(b => b?.addEventListener('click', () => {
+    const isMobile = window.innerWidth < 768;
+    const limit = isMobile ? total - 1 : total - 2;
+    if (currentIndex < limit) {
+      currentIndex++;
+      update();
+    }
+  }));
+
+  [btns[0], btns[2]].forEach(b => b?.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      update();
+    }
+  }));
+
+  update();
+</script>

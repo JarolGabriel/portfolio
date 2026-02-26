@@ -1,0 +1,115 @@
+---
+import { ChevronLeft, ChevronRight } from 'lucide-astro';
+
+interface Props {
+  isMobile?: boolean;
+}
+
+const { isMobile = false } = Astro.props;
+---
+
+{isMobile ? (
+  <>
+    <button id="prev-btn-mobile" class="nav-arrow-mobile nav-arrow-left">
+      <ChevronLeft size={20} />
+    </button>
+    <button id="next-btn-mobile" class="nav-arrow-mobile nav-arrow-right">
+      <ChevronRight size={20} />
+    </button>
+  </>
+) : (
+  <div class="flex gap-4 pt-6">
+    <button id="prev-btn-desktop" class="nav-arrow">
+      <ChevronLeft size={24} />
+    </button>
+    <button id="next-btn-desktop" class="nav-arrow">
+      <ChevronRight size={24} />
+    </button>
+  </div>
+)}
+
+<style>
+  /* Flechas Desktop */
+  .nav-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  /* Hover - borde verde */
+  .nav-arrow:hover:not(:disabled) {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* CLICK/ACTIVE - se pone verde mientras presionas */
+  .nav-arrow:active:not(:disabled) {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: transparent;
+  }
+
+  /* Cuando está deshabilitada */
+  .nav-arrow:disabled {
+    opacity: 0.5;
+    cursor: default;
+    border-color: white;
+    color: white;
+  }
+
+ /* Flechas Mobile */
+.nav-arrow-mobile {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: transparent; /* ← Sin fondo, como en Figma */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.nav-arrow-left {
+  left: -40px; /* ← AFUERA, como en Figma */
+}
+
+.nav-arrow-right {
+  right: -40px; /* ← AFUERA, como en Figma */
+}
+
+/* Hover mobile */
+.nav-arrow-mobile:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* CLICK/ACTIVE mobile */
+.nav-arrow-mobile:active:not(:disabled) {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: transparent;
+}
+
+/* Deshabilitada */
+.nav-arrow-mobile:disabled {
+  opacity: 0.5;
+  cursor: default;
+  border-color: white;
+  color: white;
+}
+</style>

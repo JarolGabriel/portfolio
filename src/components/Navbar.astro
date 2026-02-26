@@ -1,0 +1,240 @@
+---
+import { Menu, Sun, Moon } from 'lucide-astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+import MobileMenu from './MobileMenu.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navLinks = [
+  { label: t("nav.home"),         href: "#home" },
+  { label: t("nav.about"),        href: "#about" },
+  { label: t("nav.experience"),   href: "#experience" },
+  { label: t("nav.service"),      href: "#service" },
+  { label: t("nav.portfolio"),    href: "#portfolio" },
+  { label: t("nav.testimonials"), href: "#testimonials" },
+];
+
+const currentLang = lang;
+---
+
+<header id="navbar">
+  <nav>
+    <!-- Logo -->
+    <a href={currentLang === 'es' ? '/es' : '/en'} class="logo">
+        <img src="/assets/icons/logo-icon.svg" alt="Logo icon" class="logo-icon" />
+
+        <span class="logo-text">Jarol Gabriel<strong>DEV</strong></span>
+       
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href}>{link.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Right side -->
+ <div class="nav-actions">
+  <div class="nav-items-desktop">
+     <a href={currentLang === 'es' ? '/en' : '/es'} class="lang-picker">
+        {currentLang === 'es' ? <img src="https://flagcdn.com/w20/es.png" width="20" alt="ES" /> : <img src="https://flagcdn.com/w20/us.png" width="20" alt="EN" />}
+        <span>{currentLang === 'es' ? 'ES' : 'EN'}</span>
+     </a>
+     <button id="theme-btn">
+        <Sun size={20} class="sun-icon" />
+        <Moon size={20} class="moon-icon" />
+     </button>
+  </div>
+
+  <button id="menu-btn">
+    <Menu size={24} />
+  </button>
+</div>
+</nav>
+
+
+   <MobileMenu navLinks={navLinks} currentLang={currentLang} />
+
+</header>
+
+<style>
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background: color-mix(in srgb, var(--color-bg), transparent 30%);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--color-heading);
+    font-family: var(--font-menu);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo strong {
+    color: var(--color-accent);
+  }
+
+  .logo-text {
+  font-family: var(--font-menu);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.sun-icon { display: none; }
+.moon-icon { display: block; }
+
+:global(.dark) .sun-icon {
+  display: block;
+}
+
+:global(.dark) .moon-icon {
+  display: none;
+}
+
+  /* Desktop links */
+  .nav-links {
+    display: none;
+    list-style: none;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-family: var(--font-menu);
+    font-size: 1rem;
+    font-weight: 300;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-items-desktop {
+  display: none;
+  align-items: center;   
+  gap: 1.5rem;           
+}
+
+
+
+  .lang-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  font-family: var(--font-menu);
+  font-weight: 600;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.lang-picker:hover {
+  color: var(--color-accent);
+}
+
+
+.lang-picker img {
+  display: block;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+  /* Right side actions */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-actions a,
+  .nav-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    font-family: var(--font-menu);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+
+  .nav-actions a:hover,
+  .nav-actions button:hover {
+    color: var(--color-accent);
+  }
+
+  /* Mobile menu */
+
+  /* Desktop breakpoint */
+  @media (min-width: 1024px) {
+    .nav-links {
+      display: flex;
+    }
+
+    .nav-items-desktop {
+      display: flex;
+    }
+
+    #menu-btn {
+      display: none;
+    }
+
+  }
+</style>
+
+
+<script>
+  // dark mode
+  const themeButtons = document.querySelectorAll(' #theme-btn');
+  
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      
+      const isDark = html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  });
+
+  // mobil control
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

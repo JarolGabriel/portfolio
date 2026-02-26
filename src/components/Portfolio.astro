@@ -1,0 +1,298 @@
+---
+import Container from './Container.astro';
+import PortfolioCard from './PortfolioCard.astro';
+import PortfolioImage from './PortfolioImage.astro';
+import PortfolioArrows from './PortfolioArrows.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projects = [
+  {
+    title: t('portfolio.project1.title'),
+    description: t('portfolio.project1.description'),
+    githubUrl: '#',
+    demoUrl: '#',
+  },
+  {
+    title: t('portfolio.project2.title'),
+    description: t('portfolio.project2.description'),
+    githubUrl: '#',
+    demoUrl: '#',
+  },
+  {
+    title: t('portfolio.project3.title'),
+    description: t('portfolio.project3.description'),
+    githubUrl: '#',
+    demoUrl: '#',
+  },
+  {
+    title: t('portfolio.project4.title'),
+    description: t('portfolio.project4.description'),
+    githubUrl: '#',
+    demoUrl: '#',
+  },
+  {
+    title: t('portfolio.project5.title'),
+    description: t('portfolio.project5.description'),
+    githubUrl: '#',
+    demoUrl: '#',
+  },
+  {
+    title: t('portfolio.project6.title'),
+    description: t('portfolio.project6.description'),
+    githubUrl: '#',
+    demoUrl: '#',
+  },
+];
+---
+
+<section id="portfolio" class="relative py-16 md:py-24">
+  <div class="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none">
+    <img 
+      src="/assets/icons/bg-waves.svg" 
+      alt="" 
+      class="w-full h-full object-cover object-center"
+    />
+  </div>
+
+  <Container>
+    
+    <!-- Desktop Layout -->
+    <div class="hidden md:block">
+      
+      <!-- Tabs Container -->
+      <div class="mb-8 overflow-hidden">
+        <div class="flex gap-3" id="tabs-container">
+          {projects.map((project, index) => (
+            <button class="tab-btn" data-index={index}>
+              {project.title}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Project Display -->
+      <div class="grid grid-cols-2 gap-8 items-center">
+        <PortfolioImage />
+        <div>
+          <PortfolioCard 
+            title={projects[0].title}
+            description={projects[0].description}
+            githubUrl={projects[0].githubUrl}
+            demoUrl={projects[0].demoUrl}
+            githubText={t('portfolio.btn.github')}
+            demoText={t('portfolio.btn.demo')}
+          />
+          <PortfolioArrows />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Layout -->
+    <div class="md:hidden flex flex-col items-center text-center space-y-8">
+      
+      <div class="space-y-4">
+        <h2 class="text-accent text-xl font-menu">
+          {t('portfolio.title')}
+        </h2>
+        <p class="text-heading text-base leading-relaxed font-light">
+          {t('portfolio.description')}
+        </p>
+      </div>
+
+      <button class="featured-btn" id="current-project-btn-mobile">
+  {projects[0].title}
+</button>
+
+      <div class="relative w-full max-w-md">
+        <PortfolioImage class="mb-6" />
+        <PortfolioArrows isMobile={true} />
+      </div>
+
+      <PortfolioCard 
+        title={projects[0].title}
+        description={projects[0].description}
+        githubUrl={projects[0].githubUrl}
+        demoUrl={projects[0].demoUrl}
+        githubText={t('portfolio.btn.github')}
+        demoText={t('portfolio.btn.demo')}
+        isMobile={true}
+      />
+
+    </div>
+
+  
+
+  </Container>
+</section>
+
+<style>
+  .tab-btn {
+    font-family: var(--font-menu);
+    font-size: 12px;
+    font-weight: 200;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .tab-btn.active {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .tab-btn:hover {
+    border-color: var(--color-accent);
+  }
+
+  .featured-btn {
+    font-family: var(--font-menu);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0.75rem 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-accent);
+    background-color: transparent;
+    color: var(--color-accent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .featured-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+</style>
+
+<script define:vars={{ projects }}>
+  let currentIndex = 0;
+  const totalProjects = projects.length;
+  const visibleTabs = 4;
+
+  const tabsContainer = document.getElementById('tabs-container');
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const prevBtnDesktop = document.getElementById('prev-btn-desktop');
+  const nextBtnDesktop = document.getElementById('next-btn-desktop');
+  const titleDesktop = document.getElementById('project-title-desktop');
+  const descDesktop = document.getElementById('project-description-desktop');
+  const githubBtnDesktop = document.getElementById('github-btn-desktop');
+  const demoBtnDesktop = document.getElementById('demo-btn-desktop');
+
+  const prevBtnMobile = document.getElementById('prev-btn-mobile');
+  const nextBtnMobile = document.getElementById('next-btn-mobile');
+  const titleMobile = document.getElementById('project-title-mobile');
+  const descMobile = document.getElementById('project-description-mobile');
+  const githubBtnMobile = document.getElementById('github-btn-mobile');
+  const demoBtnMobile = document.getElementById('demo-btn-mobile');
+
+  function updateProject() {
+    const project = projects[currentIndex];
+
+    // Actualizar contenido
+    if (titleDesktop) titleDesktop.textContent = project.title;
+    if (descDesktop) descDesktop.textContent = project.description;
+    if (githubBtnDesktop) githubBtnDesktop.href = project.githubUrl;
+    if (demoBtnDesktop) demoBtnDesktop.href = project.demoUrl;
+
+    if (titleMobile) titleMobile.textContent = project.title;
+    if (descMobile) descMobile.textContent = project.description;
+    if (githubBtnMobile) githubBtnMobile.href = project.githubUrl;
+    if (demoBtnMobile) demoBtnMobile.href = project.demoUrl;
+
+    // Actualizar tabs
+    tabButtons.forEach((btn, index) => {
+      btn.classList.toggle('active', index === currentIndex);
+    });
+
+    // Scroll de tabs
+    if (tabsContainer) {
+      const startIndex = Math.max(0, Math.min(currentIndex - 1, totalProjects - visibleTabs));
+      const scrollAmount = startIndex * (tabButtons[0]?.offsetWidth + 12);
+      tabsContainer.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    }
+
+    // Actualizar botón mobile
+    const projectBtnMobile = document.getElementById('current-project-btn-mobile');
+    if (projectBtnMobile) projectBtnMobile.textContent = project.title;
+
+    updateArrows();
+  }
+
+  function updateArrows() {
+    // Flecha ANTERIOR (izquierda)
+    [prevBtnDesktop, prevBtnMobile].forEach(btn => {
+      if (btn) {
+        btn.disabled = currentIndex === 0;
+        
+        if (currentIndex === 0) {
+          // Deshabilitada: blanca y sin hover
+          btn.style.borderColor = 'white';
+          btn.style.color = 'white';
+          btn.style.backgroundColor = 'transparent';
+        } else {
+          // Activa: puede hacer hover
+          btn.style.borderColor = 'var(--color-accent)';
+          btn.style.color = 'var(--color-accent)';
+          btn.style.backgroundColor = 'transparent';
+        }
+      }
+    });
+
+    // arrow (right)
+    [nextBtnDesktop, nextBtnMobile].forEach(btn => {
+      if (btn) {
+        btn.disabled = currentIndex === totalProjects - 1;
+        
+        if (currentIndex === totalProjects - 1) {
+          // Deshabilitada: blanca y sin hover
+          btn.style.borderColor = 'white';
+          btn.style.color = 'white';
+          btn.style.backgroundColor = 'transparent';
+        } else {
+          // Activa: puede hacer hover
+          btn.style.borderColor = 'var(--color-accent)';
+          btn.style.color = 'var(--color-accent)';
+          btn.style.backgroundColor = 'transparent';
+        }
+      }
+    });
+  }
+
+  // Event listeners para tabs
+  tabButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      currentIndex = index;
+      updateProject();
+    });
+  });
+
+  // Event listeners para flechas
+  [prevBtnDesktop, prevBtnMobile].forEach(btn => {
+    btn?.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateProject();
+      }
+    });
+  });
+
+  [nextBtnDesktop, nextBtnMobile].forEach(btn => {
+    btn?.addEventListener('click', () => {
+      if (currentIndex < totalProjects - 1) {
+        currentIndex++;
+        updateProject();
+      }
+    });
+  });
+
+  // Inicializar
+  updateProject();
+</script>

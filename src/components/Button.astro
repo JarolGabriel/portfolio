@@ -1,0 +1,44 @@
+---
+import { Mail } from 'lucide-astro';
+
+interface Props {
+  variant?: 'primary' | 'secondary' | 'accent2' | 'yellow';
+  text: string;
+  icon?: 'mail' | 'none';
+  href?: string;
+  class?: string;
+  showArrow?: boolean;
+  id?: string;
+}
+
+const { 
+  variant = 'primary', 
+  text, 
+  icon = 'none',
+  href,
+  class: className = '',
+  showArrow = false,
+  id
+} = Astro.props;
+
+const baseClasses = "font-menu px-4 py-2.5 text-[10px] sm:px-5 sm:py-3 sm:text-xs md:px-6 md:py-3.5 md:text-sm lg:px-8 lg:py-4 lg:text-base rounded-2xl font-medium flex items-center justify-center gap-2 hover:scale-105 transition-transform cursor-pointer";
+
+const variantClasses = {
+  primary: "bg-accent text-bg",
+  secondary: "border-2 border-accent text-accent bg-transparent hover:bg-accent hover:text-bg",
+  accent2: "border-2 border-accent2 text-accent2 bg-transparent hover:bg-accent2 hover:text-bg",
+  yellow: "bg-[#f7e97c] text-black shadow-lg shadow-[#f7e97c]/20"
+};
+
+const Component = href ? 'a' : 'button';
+---
+
+<Component 
+id={id}
+  href={href}
+  class={`${baseClasses} ${variantClasses[variant]} ${className}`}
+>
+  {icon === 'mail' && <Mail size={20} />}
+  {text}
+  {showArrow && <span>→</span>}
+</Component>

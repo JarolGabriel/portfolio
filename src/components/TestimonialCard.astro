@@ -1,0 +1,83 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  content: string;
+  avatar: string;
+}
+
+const { name, role, content, avatar } = Astro.props;
+---
+
+<div class="testimonial-card">
+  <div class="flex gap-1 mb-3">
+    {[1, 2, 3, 4, 5].map(() => (
+      <span class="text-[var(--color-yellow)] text-sm">★</span>
+    ))}
+  </div>
+
+  <p class="testimonial-content">
+    "{content}"
+  </p>
+
+  <div class="flex items-center gap-3 mt-auto pt-4">
+    <img src={avatar} alt={name} class="w-10 h-10 rounded-full object-cover border border-[var(--color-accent)]" />
+    <div class="flex flex-col">
+      <span class="author-name">{name}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .testimonial-card {
+    /* ESTILO GENERAL (Móvil y Desktop) */
+    padding: 1.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--color-yellow);
+    background-color: var(--color-bg);
+    height: 220px; /* Altura normal para desktop */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* AJUSTE SOLO PARA TABLET (Entre 768px y 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .testimonial-card {
+      height: 180px;    /* Aquí la haces más bajita */
+      padding: 1rem;    /* Aquí le quitas grosor interno */
+    }
+    
+    .testimonial-content {
+      font-size: 12px;  /* Texto un poco más pequeño para que quepa */
+      -webkit-line-clamp: 4; /* Mostramos 4 líneas en lugar de 5 para ahorrar espacio */
+    }
+  }
+
+  /* ESTILO PARA DESKTOP (1024px en adelante) */
+  @media (min-width: 1024px) {
+    .testimonial-card {
+      height: 220px; /* Vuelve a su tamaño original en PC */
+      margin-right: 20px;
+    }
+  }
+
+  .testimonial-content {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .author-name {
+    font-family: var(--font-menu);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+</style>

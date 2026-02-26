@@ -1,0 +1,286 @@
+---
+const technologies = [
+  { name: 'React', slug: 'react', color: '#61DAFB' },
+  { name: 'Next.js', slug: 'nextdotjs', color: '#000000' },
+  { name: 'TypeScript', slug: 'typescript', color: '#3178C6' },
+  { name: 'JavaScript', slug: 'javascript', color: '#F7DF1E' },
+  { name: 'Tailwind', slug: 'tailwindcss', color: '#06B6D4' },
+  { name: 'Node.js', slug: 'nodedotjs', color: '#339933' },
+  { name: 'Python', slug: 'python', color: '#3776AB' },
+  { name: 'Django', slug: 'django', color: '#092E20' },
+  { name: 'FastAPI', slug: 'fastapi', color: '#009688' },
+  { name: 'MySQL', slug: 'mysql', color: '#4479A1' },
+  { name: 'MongoDB', slug: 'mongodb', color: '#47A248' },
+  { name: 'PostgreSQL', slug: 'postgresql', color: '#4169E1' },
+  { name: 'Git', slug: 'git', color: '#F05032' },
+  { name: 'Docker', slug: 'docker', color: '#2496ED' },
+];
+
+const extendedTech = [...technologies, ...technologies];
+---
+
+<section class="tech-stack py-12 md:py-16 overflow-hidden">
+  <!-- Desktop: 1 fila -->
+  <div class="hidden md:block relative">
+    <div class="tech-scroll">
+      <div class="tech-track">
+        {extendedTech.map((tech) => (
+          <div class="tech-card">
+            <img 
+              src={`https://cdn.simpleicons.org/${tech.slug}`} 
+              alt={tech.name}
+              width="24"
+              height="24"
+              class="tech-icon"
+            />
+            <span>{tech.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <!-- gradients bordes-->
+    <div class="fade-left"></div>
+    <div class="fade-right"></div>
+  </div>
+
+  <!-- Mobile: 2 lines -->
+  <div class="md:hidden space-y-4">
+    <!-- File 1: left → right -->
+    <div class="relative">
+      <div class="tech-scroll">
+        <div class="tech-track-mobile-left">
+          {extendedTech.slice(0, 7).map((tech) => (
+            <div class="tech-card-mobile">
+              <img 
+                src={`https://cdn.simpleicons.org/${tech.slug}`} 
+                alt={tech.name}
+                width="20"
+                height="20"
+                
+              />
+              <span>{tech.name}</span>
+            </div>
+          ))}
+          {extendedTech.slice(0, 7).map((tech) => (
+            <div class="tech-card-mobile">
+              <img 
+                src={`https://cdn.simpleicons.org/${tech.slug}`} 
+                alt={tech.name}
+                width="20"
+                height="20"
+               
+              />
+              <span>{tech.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="fade-left-mobile"></div>
+      <div class="fade-right-mobile"></div>
+    </div>
+
+    <!-- line 2: right → left -->
+    <div class="relative">
+      <div class="tech-scroll">
+        <div class="tech-track-mobile-right">
+          {extendedTech.slice(7, 14).map((tech) => (
+            <div class="tech-card-mobile">
+              <img 
+                src={`https://cdn.simpleicons.org/${tech.slug}`} 
+                alt={tech.name}
+                width="20"
+                height="20"
+                
+              />
+              <span>{tech.name}</span>
+            </div>
+          ))}
+          {extendedTech.slice(7, 14).map((tech) => (
+            <div class="tech-card-mobile">
+              <img 
+                src={`https://cdn.simpleicons.org/${tech.slug}`} 
+                alt={tech.name}
+                width="20"
+                height="20"
+                
+              />
+              <span>{tech.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="fade-left-mobile"></div>
+      <div class="fade-right-mobile"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-stack {
+    position: relative;
+    width: 100%;
+  }
+
+  .tech-scroll {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Desktop Track */
+  .tech-track {
+    display: flex;
+    gap: 1rem;
+    animation: scroll-left 40s linear infinite;
+    width: max-content;
+  }
+
+  /* Mobile Tracks */
+  .tech-track-mobile-left {
+    display: flex;
+    gap: 0.75rem;
+    animation: scroll-left 25s linear infinite;
+    width: max-content;
+  }
+
+  .tech-track-mobile-right {
+    display: flex;
+    gap: 0.75rem;
+    animation: scroll-right 25s linear infinite;
+    width: max-content;
+  }
+
+  /* Tech Card - Desktop */
+  .tech-card {
+    position: relative;
+    min-width: 180px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0 1.5rem;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
+            linear-gradient(to left, #F7E97C, #0F0F0F) border-box;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tech-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .tech-card span {
+    font-family: var(--font-menu);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  .tech-card img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  /* Tech Card - Mobile */
+  .tech-card-mobile {
+    position: relative;
+    min-width: 140px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
+            linear-gradient(to left, #F7E97C, #0F0F0F) border-box;
+  }
+
+  .tech-card-mobile span {
+    font-family: var(--font-menu);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  .tech-card-mobile img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+  
+
+  /* Animaciones */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /* gradients fade - Desktop */
+  .fade-left,
+  .fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .fade-left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-bg), transparent);
+  }
+
+  .fade-right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-bg), transparent);
+  }
+
+  /* gradients de fade - Mobile */
+  .fade-left-mobile,
+  .fade-right-mobile {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .fade-left-mobile {
+    left: 0;
+    background: linear-gradient(to right, var(--color-bg), transparent);
+  }
+
+  .fade-right-mobile {
+    right: 0;
+    background: linear-gradient(to left, var(--color-bg), transparent);
+  }
+
+  /* stop animación hover - Desktop */
+  @media (min-width: 768px) {
+    .tech-track:hover {
+      animation-play-state: paused;
+    }
+  }
+</style>

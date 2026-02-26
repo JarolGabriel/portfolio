@@ -1,0 +1,163 @@
+---
+import Container from './Container.astro';
+import Button from './Button.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Github, Linkedin, Mail, Phone, Check } from 'lucide-astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const quickLinks = [
+  { label: t("nav.home"), href: "#home" },
+  { label: t("nav.about"), href: "#about" },
+  { label: t("nav.experience"), href: "#experience" },
+  { label: t("nav.service"), href: "#service" },
+  { label: t("nav.portfolio"), href: "#portfolio" },
+  { label: t("nav.testimonials"), href: "#testimonials" },
+];
+
+const services = [
+  { label: "Frontend Development", href: "#" },
+  { label: "Backend Development", href: "#" },
+  { label: "Full Stack Development", href: "#" },
+  { label: "Performance Optimization", href: "#" },
+];
+---
+
+<footer class="relative pt-20 pb-10 overflow-hidden bg-[var(--color-bg)]">
+  <div class="absolute inset-0 opacity-5 pointer-events-none">
+    <img src="/assets/icons/bg-waves.svg" alt="" class="w-full h-full object-cover" />
+  </div>
+
+  <Container>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/assets/icons/logo-icon.svg" alt="Logo" class="w-8 h-8" />
+          <span class="text-white font-montserrat font-medium text-xl tracking-tight">
+            Jarol Gabriel <span class="text-accent">DEV</span>
+          </span>
+        </div>
+
+        <p class="text-gray-400 text-xm md:text-base max-w-md leading-relaxed mb-8">
+          {t('footer.description')}
+        </p>
+
+        <a href="#contact" class="btn-yellow mb-10">
+          {t('footer.button')}
+        </a>
+
+        <div class="flex items-center gap-4">
+          <div class="h-[1px] w-10 bg-[var(--color-yellow)] opacity-50"></div>
+          <div class="flex gap-4">
+            {[1, 2, 3].map(() => (
+              <div class="w-8 h-8 rounded-full border border-purple-500/50 flex items-center justify-center text-white bg-transparent">
+                <Check size={16} strokeWidth={3} />
+              </div>
+            ))}
+          </div>
+          <div class="h-[1px] w-10 bg-[var(--color-yellow)] opacity-50"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 w-full z-10">
+        <div>
+          <h4 class="text-accent font-menu mb-6 text-lg lowercase">{t('footer.quickLinks')}</h4>
+          <ul class="flex flex-col gap-3">
+            {quickLinks.map(link => (
+              <li>
+                <a href={link.href} class="text-gray-400 hover:text-accent transition-colors text-sm md:text-xm">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-accent font-menu mb-6 text-lg lowercase">{t('footer.services')}</h4>
+          <ul class="flex flex-col gap-3">
+            {services.map(service => (
+              <li>
+                <a href={service.href} class="text-gray-400 hover:text-accent transition-colors text-sm md:text-xm">
+                  {service.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+<div>
+  <h4 class="text-accent font-menu mb-6 text-lg lowercase">{t('footer.contact')}</h4>
+  
+  <ul class="flex flex-col gap-6 items-start">
+    <li>
+      <a href="https://wa.me/001234567" target="_blank" rel="noopener noreferrer" 
+         class="social-link" aria-label="WhatsApp">
+        <Phone size={24} strokeWidth={1.5} />
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" 
+         class="social-link" aria-label="Github">
+        <Github size={24} strokeWidth={1.5} />
+      </a>
+    </li>
+    <li>
+      <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" 
+         class="social-link" aria-label="LinkedIn">
+        <Linkedin size={24} strokeWidth={1.5} />
+      </a>
+    </li>
+    <li>
+      <a href="mailto:jarolgabriel@example.com" 
+         class="social-link" aria-label="Email">
+        <Mail size={24} strokeWidth={1.5} />
+      </a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+
+<div class="flex flex-col md:flex-row items-center gap-4 mt-5 w-full">
+
+  <Button 
+    variant="yellow" 
+    text={t('hero.cta')} 
+    icon="mail"
+    href="#contact"
+    showArrow={true}
+    class="w-full md:w-auto" 
+  />
+  
+</div>
+
+    <div class="mt-20 pt-8 border-t border-white/5 text-center lg:text-left">
+      <p class="text-gray-500 text-sm">
+        {t('footer.rights')}
+      </p>
+    </div>
+  </Container>
+</footer>
+
+
+
+<style>
+  .social-link {
+    color: #9ca3af; /* Gris suave por defecto */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+  }
+
+  .social-link:hover {
+    color: var(--color-accent); 
+    transform: translateX(5px); 
+  }
+
+
+</style>
+

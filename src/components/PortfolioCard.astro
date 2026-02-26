@@ -1,0 +1,83 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  githubUrl: string;
+  demoUrl: string;
+  githubText: string;
+  demoText: string;
+  isMobile?: boolean;
+}
+
+const { title, description, githubUrl, demoUrl, githubText, demoText, isMobile = false } = Astro.props;
+---
+
+<div class={isMobile ? "space-y-4" : "space-y-6"}>
+  <h3 
+    class={isMobile ? "project-title-mobile" : "project-title"} 
+    id={isMobile ? "project-title-mobile" : "project-title-desktop"}
+  >
+    {title}
+  </h3>
+  
+  <p 
+    class={isMobile ? "project-description-mobile" : "project-description"} 
+    id={isMobile ? "project-description-mobile" : "project-description-desktop"}
+  >
+    {description}
+  </p>
+  
+  <!-- Espacio extra antes de los botones -->
+  <div class={isMobile ? "flex gap-3 justify-center pt-2" : "flex gap-4 pt-4"}>
+    <Button 
+      variant="secondary" 
+      text={githubText}
+      href={githubUrl}
+      id={isMobile ? "github-btn-mobile" : "github-btn-desktop"}
+      class={isMobile ? "!text-xs !py-2 !px-4" : "!text-sm !py-2.5 !px-5"}
+    />
+    <Button 
+      variant="accent2" 
+      text={demoText}
+      href={demoUrl}
+      id={isMobile ? "demo-btn-mobile" : "demo-btn-desktop"}
+      class={isMobile ? "!text-xs !py-2 !px-4" : "!text-sm !py-2.5 !px-5"}
+    />
+  </div>
+</div>
+
+<style>
+  .project-title {
+    font-family: var(--font-menu);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-accent);
+    line-height: 1.2;
+  }
+
+  .project-description {
+    font-family: var(--font-menu);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  .project-title-mobile {
+    font-family: var(--font-menu);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-accent);
+    line-height: 1.2;
+  }
+
+  .project-description-mobile {
+    font-family: var(--font-menu);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+</style>

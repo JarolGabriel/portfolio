@@ -1,46 +1,79 @@
-# Astro Starter Kit: Basics
+# Personal Portfolio | Jarol Gabriel DEV
 
-```sh
-npm create astro@latest -- --template basics
-```
+`![Portfolio Preview](/assets/images/portfolio_jarol.png)`
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+A modern, high-performance personal portfolio built with **Astro 5** and
+**Tailwind CSS 4**. This project showcases my work, services, and technical
+expertise as a Full Stack Developer.
 
-## 🚀 Project Structure
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://YOUR-DEPLOYMENT-LINK-HERE.com)
 
-Inside of your Astro project, you'll see the following folders and files:
+---
+
+## 🚀 Tech Stack
+
+- **Framework:** [Astro 5](https://astro.build/) (Island Architecture for
+  extreme performance)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/) (Next-gen
+  utility-first CSS)
+- **Icons:** [Lucide Astro](https://lucide.dev/) (Clean and consistent
+  iconography)
+- **Type Safety:** [TypeScript](https://www.typescriptlang.org/)
+- **I18n:** Internationalization support (English & Spanish)
+
+## ✨ Key Features
+
+- **Multi-language Support:** Fully localized content for a global audience.
+- **Bento-style & Grid Layouts:** Clean, modern UI inspired by professional
+  Figma designs.
+- **Responsive Testimonials:** Custom-built carousel logic optimized for Mobile,
+  Tablet, and Desktop.
+- **Performance First:** Optimized images and minimal JavaScript delivery thanks
+  to Astro's zero-JS-by-default approach.
+- **Fully Responsive:** Seamless experience across all device sizes.
+
+## 📁 Project Structure
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+├── public/              # Static assets (images, icons, svgs)
+├── src/
+│   ├── components/      # Reusable Astro components (Button, Cards, etc.)
+│   ├── i18n/            # Translation dictionaries and logic
+│   ├── layouts/         # Page templates
+│   └── pages/           # Routes and views
+└── package.json         # Project dependencies and scripts
+
+
+🛠️ Installation & Setup
+Clone the repository:
+
+git clone [https://github.com/your-username/portfolio.git](https://github.com/your-username/portfolio.git)
+
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+Build for production:
+
+npm run build
+
+🔗 Live Link
+You can visit the live version of this portfolio here:
+👉 https://YOUR-DEPLOYMENT-LINK-HERE.com
+
+👤 Author
+Jarol Gabriel
+
+LinkedIn: www.linkedin.com/in/jarol-gabriel
+
+GitHub: https://github.com/JarolGabriel
+
+© 2026 Jarol Gabriel DEV. All rights reserved.
+
+---
 ```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

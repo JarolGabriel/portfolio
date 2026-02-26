@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-menu: "Darker Grotesque", sans-serif;
+  --font-heading: "Darker Grotesque", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+
+  --font-menu: var(--font-menu);
+
+  --color-bg: var(--bg);
+  --color-accent: var(--accent);
+  --color-yellow: var(--yellow);
+  --color-text-main: var(--text-main);
+  --color-accent2: var(--color-accent2);
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+/* ── Light mode variables ── */
+:root {
+  --color-bg: #f9fafb;
+  --color-bg-card: #ffffff;
+  --color-text: #4b5563;
+  --color-heading: #111827;
+  --color-accent: #059669;
+  --color-accent2: #8b5cf6;
+  --color-yellow: #d97706;
+  --color-border: #e5e7eb;
+
+  --bg: #f9fafb;
+  --accent: #059669;
+  --yellow: #d97706;
+  --text-main: #4b5563;
+}
+
+/* ── Dark mode variables ── */
+.dark {
+  --color-bg: #011111;
+  --color-bg-card: #0a1f1f;
+  --color-text: #9ca3af;
+  --color-heading: #ffffff;
+  --color-accent: #26cc6b;
+  --color-accent2: #dd9fff;
+  --color-yellow: #f7e97c;
+  --color-border: #0f2a2a;
+
+  --bg: #011111;
+  --accent: #26cc6b;
+  --yellow: #f7e97c;
+  --text-main: #d1d5db;
+  --accent2: #dd9fff;
+}
+/* ── Reset ── */
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base styles ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}

@@ -1,0 +1,79 @@
+---
+import AvailableBadge from './AvailableBadge.astro';
+import TechStack from '../components/TechStack.astro';
+import Button from './Button.astro';
+import { Mail } from 'lucide-astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+import Container from './Container.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+---
+
+
+<section id="home" class=" relative flex items-center pt-24 pb-8">
+  
+  <!-- waves -->
+  <div class="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none ">
+    <img 
+    src="/assets/icons/bg-waves.svg" 
+    alt="" 
+    class="w-full h-full object-cover object-center"
+    />
+  </div>
+<Container>
+  <div class="flex items-center justify-between w-full mb-4">
+    <h1 class="text-accent2 text-2xl md:text-[40px] font-medium leading-none">
+      {t('hero.greeting')}
+    </h1>
+    <AvailableBadge />
+  </div>
+
+  <div class="relative w-full">
+    
+    <h2 class="text-accent font-montserrat font-bold uppercase text-[34px] md:text-[80px] lg:text-[145px] leading-[1] md:leading-[0.85] tracking-tighter z-10 relative">
+      JAROL <br class="block md:hidden" /> GABRIEL
+    </h2>
+
+ <div class="absolute right-0 top-[-20px] md:top-[-20px] w-[140px] md:w-[280px] lg:w-[450px] z-20">
+  <div class="relative">
+    <div class="absolute top-[55%] left-1/2 -translate-x-1/2 w-[95%] h-[60%] bg-[var(--color-accent2)] rounded-b-full -z-10 shadow-[0_0_50px_rgba(221,159,255,0.4)]"></div>
+    
+    <img 
+      src="/assets/icons/jarolPerfil.png" 
+      alt="Jarol Gabriel" 
+      class="w-full h-auto grayscale object-cover"
+    />
+  </div>
+</div>
+  </div>
+
+  <div class="mt-13 md:mt-10 max-w-[600px] relative z-30">
+    <h3 class="text-accent2 text-xl md:text-2xl font-semibold mb-2">
+      {t('hero.title')}
+    </h3>
+    <p class="font-menu font-light text-sm md:w-[400px] lg:w-[450px] leading-relaxed opacity-90 mb-6">
+      {t('hero.description')}
+    </p>
+    
+    <div class="flex items-center gap-4  mt-5 w-full">
+
+      <Button 
+  variant="primary" 
+  text={t('hero.cta')} 
+  icon="mail"
+  href="#contact"
+  showArrow={true}
+/>
+      <button class="w-14 h-14 flex items-center justify-center border border-accent2/30 rounded-2xl bg-accent2/10 text-accent2 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <TechStack />
+</Container>
+
+</section>

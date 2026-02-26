@@ -1,14 +1,34 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Jarol Gabriel</title>
+		<!-- font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<script is:inline>
+		// mode dark alway for load
+		const theme = localStorage.getItem('theme') || 'dark';
+		document.documentElement.classList.add(theme);
+		</script>
 	</head>
 	<body>
+		<Navbar />
 		<slot />
 	</body>
 </html>

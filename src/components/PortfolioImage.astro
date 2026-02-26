@@ -1,0 +1,25 @@
+---
+import { Play } from 'lucide-astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`relative group ${className}`}>
+  <picture>
+    <source media="(min-width: 768px)" srcset="/assets/images/imagen_desktop.png">
+    <img 
+      src="/assets/images/imagen_mobile_02.png" 
+      alt="Project preview"
+      class="w-full h-auto rounded-2xl"
+    />
+  </picture>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center bg-black/20 backdrop-blur-sm cursor-pointer hover:scale-110 transition-transform">
+      <Play size={28} class="text-white ml-1" fill="white" />
+    </div>
+  </div>
+</div>
