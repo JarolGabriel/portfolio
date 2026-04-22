@@ -149,6 +149,14 @@ export const ui = {
     "testimonials.client5.testimonial":
       "Transformed our digital presence completely. The website is fast, beautiful, and exactly what we needed to scale our business.",
 
+    // contact
+    "contact.title": "¡Hablemos!",
+    "contact.name": "Nombre",
+    "contact.message": "Mensaje",
+    "contact.sendMessage": "Enviar Mensaje",
+    "contact.subtitle":
+      "¿Tienes un proyecto en mente o buscas un nuevo desarrollador? Escríbeme.",
+
     "footer.description":
       "Soy un Desarrollador Full Stack autodidacta con pasión por resolver problemas del mundo real a través del código. Desde interfaces frontend hasta sistemas backend, creo productos digitales fluidos, responsivos y de alto rendimiento.",
     "footer.quickLinks": "Enlaces Rápidos",
@@ -299,6 +307,14 @@ export const ui = {
     "testimonials.client5.role": "Marketing Director, GrowthLab",
     "testimonials.client5.testimonial":
       "Transformed our digital presence completely. The website is fast, beautiful, and exactly what we needed to scale our business.",
+
+    // contact
+    "contact.title": "Let's Talk!",
+    "contact.name": "Name",
+    "contact.message": "Message",
+    "contact.sendMessage": "Send Message",
+    "contact.subtitle":
+      "Have a project in mind or looking for a new developer? Write me.",
 
     "footer.description":
       "I'm a self-taught Full Stack Developer with a passion for solving real-world problems through code. From frontend interfaces to backend systems, I create smooth, responsive, and high-performing digital products.",

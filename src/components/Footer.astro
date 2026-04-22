@@ -2,7 +2,7 @@
 import Container from './Container.astro';
 import Button from './Button.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import { Github, Linkedin, Mail, Phone, Check } from 'lucide-astro';
+import { Github, Linkedin, Mail, MessageCircleMore, Check } from 'lucide-astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -24,7 +24,7 @@ const services = [
 ];
 ---
 
-<footer class="relative pt-20 pb-10 overflow-hidden bg-[var(--color-bg)]">
+<footer class="relative pt-20 pb-10 overflow-hidden bg-[var(--color-bg)] " id="contact">
   <div class="absolute inset-0 opacity-5 pointer-events-none">
     <img src="/assets/icons/bg-waves.svg" alt="" class="w-full h-full object-cover" />
   </div>
@@ -92,30 +92,62 @@ const services = [
   <h4 class="text-accent font-menu mb-6 text-lg lowercase">{t('footer.contact')}</h4>
   
   <ul class="flex flex-col text-white/60 gap-6 items-start">
+
     <li>
-      <a href="https://wa.me/001234567" target="_blank" rel="noopener noreferrer" 
-         class="social-link" aria-label="WhatsApp">
-        <Phone size={24} strokeWidth={1.5} />
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer" 
-         class="social-link" aria-label="Github">
-        <Github size={24} strokeWidth={1.5} />
-      </a>
-    </li>
-    <li>
-      <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer" 
-         class="social-link" aria-label="LinkedIn">
+      <a href="https://linkedin.com/in/jarol-gabriel" target="_blank" rel="noopener noreferrer" 
+         class="social-link flex items-center gap-3" aria-label="LinkedIn">
         <Linkedin size={24} strokeWidth={1.5} />
+        <p class="ml-2">LinkedIn</p>
       </a>
     </li>
+    
     <li>
-      <a href="mailto:jarolgabriel@example.com" 
-         class="social-link" aria-label="Email">
-        <Mail size={24} strokeWidth={1.5} />
+  <button 
+    id="copy-email"
+    class="social-link flex items-center gap-3 cursor-pointer bg-transparent border-none p-0 group" 
+    aria-label="Copiar Email"
+  >
+    <Mail size={24} strokeWidth={1.5} class="group-hover:text-accent transition-colors" />
+    <p class="ml-2 group-hover:text-accent transition-colors font-body">Email</p>
+  </button>
+</li>
+    
+    <li>
+      <a href="https://github.com/jarolGabriel" target="_blank" rel="noopener noreferrer" 
+         class="social-link flex items-center gap-3" aria-label="Github">
+        <Github size={24} strokeWidth={1.5} />
+        <p class="ml-2">GitHub</p>
       </a>
     </li>
+        <!-- <li>
+      <a href="https://wa.me/001234567" target="_blank" rel="noopener noreferrer" 
+         class="social-link flex items-center gap-3" aria-label="WhatsApp">
+        <MessageCircleMore size={24} strokeWidth={1.5} />
+        <p class="ml-2">WhatsApp</p>
+      </a>
+    </li> -->
+    <li>
+  <a href="https://x.com/GKJarol" target="_blank" rel="noopener noreferrer" 
+     class="social-link flex items-center gap-3 group" aria-label="X">
+    <svg 
+      width="24" 
+      height="24" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="1.5" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+      class="group-hover:text-accent transition-colors duration-300"
+    >
+      <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+      <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+    </svg>
+    <p class="ml-2 group-hover:text-accent transition-colors duration-300">@GKJarol</p>
+  </a>
+</li>
+  
+</li>
   </ul>
 </div>
       </div>
@@ -160,4 +192,33 @@ const services = [
 
 
 </style>
+
+
+<script>
+  import Swal from 'sweetalert2';
+
+  const copyBtn = document.getElementById('copy-email');
+  const user = "jarolgabriel.jimenez70";
+  const domain = "gmail.com";
+  const fullEmail = `${user}@${domain}`;
+
+  copyBtn?.addEventListener('click', () => {
+    
+    navigator.clipboard.writeText(fullEmail);
+
+    
+    Swal.fire({
+      title: 'Copied!',
+      text: 'Email copied to clipboard.',
+      icon: 'success',
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      background: '#0a1f1f',
+      color: '#ffffff',
+      iconColor: '#26cc6b'
+    });
+  });
+</script>
 
