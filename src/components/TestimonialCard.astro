@@ -35,7 +35,7 @@ const { name, role, content, avatar } = Astro.props;
     border-radius: 20px;
     border: 1px solid var(--color-yellow);
     background-color: var(--color-bg);
-    height: 220px; /* Altura normal para desktop */
+    min-height: 220px; 
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -44,20 +44,20 @@ const { name, role, content, avatar } = Astro.props;
   /* AJUSTE SOLO PARA TABLET (Entre 768px y 1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
     .testimonial-card {
-      height: 180px;    /* Aquí la haces más bajita */
-      padding: 1rem;    /* Aquí le quitas grosor interno */
+      height: 180px;    
+      padding: 1rem;    
     }
     
     .testimonial-content {
-      font-size: 12px;  /* Texto un poco más pequeño para que quepa */
-      -webkit-line-clamp: 4; /* Mostramos 4 líneas en lugar de 5 para ahorrar espacio */
+      font-size: 12px;  
+      -webkit-line-clamp: 4; 
     }
   }
 
   /* ESTILO PARA DESKTOP (1024px en adelante) */
   @media (min-width: 1024px) {
     .testimonial-card {
-      height: 220px; /* Vuelve a su tamaño original en PC */
+      height: 220px; 
       margin-right: 20px;
     }
   }
