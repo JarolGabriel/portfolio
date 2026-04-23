@@ -67,9 +67,35 @@ const t = useTranslations(lang);
   href="#contact"
   showArrow={true}
 />
-      <button class="w-14 h-14 flex items-center justify-center border border-accent2/30 rounded-2xl bg-accent2/10 text-accent2 cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      </button>
+      <!-- <a 
+  href="/assets/docs/Jarol_Gabriel_CV.pdf" 
+  target="_blank"
+  rel="noopener noreferrer"
+  download="Jarol_Gabriel_CV.pdf"
+  class="w-14 h-14 flex items-center justify-center border border-accent2/30 rounded-2xl bg-accent2/10 text-accent2 cursor-pointer transition-all hover:bg-accent2/20"
+  title="Download CV"
+>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+  </svg>
+  
+</a> -->
+<a 
+  href="/assets/docs/Jarol_Gabriel_CV.pdf" 
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group relative w-14 h-14 flex items-center justify-center border border-accent2/30 rounded-2xl bg-accent2/10 text-accent2 cursor-pointer transition-all hover:bg-accent2/20"
+  title="View CV"
+>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+
+  <span class="absolute -bottom-10 scale-0 transition-all rounded bg-accent2/80 p-2 text-xs text-white group-hover:scale-100 font-menu whitespace-nowrap">
+    Open CV in new tab
+  </span>
+</a>
     </div>
   </div>
 
