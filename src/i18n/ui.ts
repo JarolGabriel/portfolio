@@ -18,6 +18,7 @@ export const ui = {
     "hero.description":
       "Full Stack Developer autodidacta especializado en React y TypeScript. Construyo arquitecturas escalables usando Node.js y Python, respaldadas por bases de datos SQL optimizadas. Mi enfoque está en ofrecer soluciones de alto rendimiento desde la lógica hasta el despliegue.",
     "hero.cta": "Hablemos",
+    "hero.cv": "Ver mi CV",
     "hero.available": "Contactame aqui",
 
     "about.title": "Sobre mí",
@@ -88,19 +89,19 @@ export const ui = {
     "portfolio.tab.api": "APIs",
 
     // Proyectos
-    "portfolio.project1.title": "Desarrollo de Dashboard",
+    "portfolio.project1.title": "EquiFlow API",
     "portfolio.project1.description":
-      "Construyo dashboards personalizados con UI limpia y lógica backend poderosa, transformando datos complejos en información accionable.",
+      "EquiFlow: API de Gestión de Finanzas Personales EquiFlow es una API RESTful robusta diseñada para ayudar a los usuarios a realizar un seguimiento de su salud financiera, gestionar cuentas y monitorear transacciones con precisión. Desarrollada como un proyecto de portafolio profesional, se centra en una arquitectura limpia, autenticación segura y un diseño de base de datos escalable.",
     "portfolio.project1.category": "dashboard",
 
-    "portfolio.project2.title": "Aplicación TaskFlow",
+    "portfolio.project2.title": "Blooms and Bits - Frontend Platform",
     "portfolio.project2.description":
-      "Sistema completo de gestión de tareas con autenticación en tiempo real, colaboración y análisis de productividad.",
+      "Plataforma e-commerce SPA construida con Next.js 14 y Material-UI, ofreciendo experiencias diferenciadas para compradores y vendedores de flores. Implementa autenticación social con Google OAuth, formularios validados con React Hook Form + Yup, carrito de compras interactivo con estado global, sistema de filtrado dinámico de productos, integración completa de pagos con PayPal React SDK, y dashboards especializados para gestión de inventario (vendedores) e historial de pedidos (compradores). Incluye editor de texto enriquecido Quill para descripciones y sistema de upload de imágenes con Uppy.",
     "portfolio.project2.category": "web",
 
-    "portfolio.project3.title": "ShopStock",
+    "portfolio.project3.title": "BACKEND - Blooms and Bits API",
     "portfolio.project3.description":
-      "Plataforma de e-commerce con carrito de compras, procesamiento de pagos y sistema de inventario automatizado.",
+      "API REST robusta para e-commerce de floristerías con arquitectura escalable en Node.js/Express/MongoDB. Implementa autenticación dual (JWT + Google OAuth) con roles diferenciados (buyer/seller), sistema completo de gestión de productos con filtros avanzados por ocasión, color y tipo de flor, carrito de compras con persistencia, y procesamiento de pagos con PayPal Checkout SDK. Incluye manejo de imágenes con Transloadit, validaciones con Validator, encriptación bcrypt, y endpoints protegidos con middleware de autorización personalizado.",
     "portfolio.project3.category": "ecommerce",
 
     "portfolio.project4.title": "DashX Analytics",
@@ -179,6 +180,7 @@ export const ui = {
     "hero.description":
       "Self-taught Full Stack Developer specializing in React and TypeScript. I build scalable architectures using Node.js and Python, backed by optimized SQL databases. My focus is on delivering high-performance solutions from logic to deployment.",
     "hero.cta": "Let's Talk",
+    "hero.cv": "Open CV in new tab",
     "hero.available": "Available for work",
 
     "about.title": "About me",
@@ -247,19 +249,19 @@ export const ui = {
     "portfolio.tab.ecommerce": "E-commerce",
     "portfolio.tab.api": "APIs",
 
-    "portfolio.project1.title": "Dashboard Development",
+    "portfolio.project1.title": "EquiFlow API",
     "portfolio.project1.description":
-      "I build custom dashboards with clean UI and powerful backend logic – turning complex data into actionable insights.",
+      "EquiFlow: Personal Finance Management API EquiFlow is a robust RESTful API designed to help users track their financial health, manage accounts, and monitor transactions with precision. Built as a professional portfolio project, it focuses on clean architecture, secure authentication, and scalable database design into actionable insights.",
     "portfolio.project1.category": "dashboard",
 
-    "portfolio.project2.title": "TaskFlow App",
+    "portfolio.project2.title": "Blooms and Bits - Frontend Platform",
     "portfolio.project2.description":
-      "Complete task management system with real-time authentication, collaboration, and productivity analytics.",
+      "E-commerce SPA platform built with Next.js 14 and Material-UI, delivering differentiated experiences for flower buyers and sellers. Implements social authentication via Google OAuth, validated forms using React Hook Form + Yup, interactive shopping cart with global state management, dynamic product filtering system, complete payment integration with PayPal React SDK, and specialized dashboards for inventory management (sellers) and order history (buyers). Features Quill rich text editor for descriptions and Uppy-powered image upload system.",
     "portfolio.project2.category": "web",
 
-    "portfolio.project3.title": "ShopStock",
+    "portfolio.project3.title": "BACKEND - Blooms and Bits API",
     "portfolio.project3.description":
-      "E-commerce platform with shopping cart, payment processing, and automated inventory management system.",
+      "Robust REST API for flower shop e-commerce with scalable Node.js/Express/MongoDB architecture. Implements dual authentication (JWT + Google OAuth) with differentiated roles (buyer/seller), comprehensive product management system with advanced filtering by occasion, color and flower type, persistent shopping cart, and payment processing via PayPal Checkout SDK. Features image handling with Transloadit, Validator-based validations, bcrypt encryption, and protected endpoints using custom authorization middleware.",
     "portfolio.project3.category": "ecommerce",
 
     "portfolio.project4.title": "DashX Analytics",

@@ -1,25 +1,31 @@
 ---
-import { Play } from 'lucide-astro';
+import {  Eye } from 'lucide-astro';
 
 interface Props {
+  id?: string;
   class?: string;
+  src: string;
+  alt: string;
+  url: string;
 }
 
-const { class: className = '' } = Astro.props;
+const {id, class: className = '', src, alt, url } = Astro.props;
 ---
 
-<div class={`relative group ${className}`}>
-  <picture>
-    <source media="(min-width: 768px)" srcset="/assets/images/imagen_desktop.png">
+<div id={id}  class={`relative group ${className}`}>
+  <a href={url} target="_blank" rel="noopener noreferrer">
+    <source media="(min-width: 768px)" srcset="/assets/images/equiflowapi.png">
     <img 
-      src="/assets/images/imagen_mobile_02.png" 
-      alt="Project preview"
+      src={url}
+      alt={alt}
       class="w-full h-auto rounded-2xl"
     />
-  </picture>
+
   <div class="absolute inset-0 flex items-center justify-center">
-    <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center bg-black/20 backdrop-blur-sm cursor-pointer hover:scale-110 transition-transform">
-      <Play size={28} class="text-white ml-1" fill="white" />
-    </div>
+    <!-- <div class="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center bg-black/20 backdrop-blur-sm cursor-pointer hover:scale-110 transition-transform">
+      
+       <Eye class="text-accent w-5 h-5 md:w-7 md:h-7" />
+    </div> -->
   </div>
+</a>
 </div>

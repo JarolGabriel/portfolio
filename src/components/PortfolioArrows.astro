@@ -50,7 +50,7 @@ const { isMobile = false } = Astro.props;
     color: var(--color-accent);
   }
 
-  /* CLICK/ACTIVE - se pone verde mientras presionas */
+  
   .nav-arrow:active:not(:disabled) {
     border-color: var(--color-accent);
     color: var(--color-accent);
@@ -74,7 +74,7 @@ const { isMobile = false } = Astro.props;
   height: 32px;
   border-radius: 50%;
   border: 2px solid white;
-  background-color: transparent; /* ← Sin fondo, como en Figma */
+  background-color: transparent;
   color: white;
   display: flex;
   align-items: center;
@@ -85,11 +85,11 @@ const { isMobile = false } = Astro.props;
 }
 
 .nav-arrow-left {
-  left: -40px; /* ← AFUERA, como en Figma */
+  left: -40px; 
 }
 
 .nav-arrow-right {
-  right: -40px; /* ← AFUERA, como en Figma */
+  right: -40px; 
 }
 
 /* Hover mobile */

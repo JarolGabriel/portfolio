@@ -30,29 +30,36 @@ const t = useTranslations(lang);
       </p>
 
       <!-- Stats Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4 w-full max-w-7xl mt-2.5">
-        <div class="stat-card">
-          <span class="stat-text">
-            <span class="stat-number">3+</span> Years of Hands-On<br />Development
-          </span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-text">
-            <span class="stat-number">20+</span> Real-world<br />Projects
-          </span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-text">
-            <span class="stat-number">90%+</span> Tech Stack<br />Mastery
-          </span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-text">
-            <span class="stat-number">100%</span> Continuous<br />Learning
-          </span>
-        </div>
-      </div>
+     
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4 w-full max-w-7xl mt-2.5">
+  <div class="stat-card">
+    <span class="stat-text">
+      <span class="stat-number"><span id="counter-years">0</span>+</span> 
+      Years of Hands-On<br />Development
+    </span>
+  </div>
 
+  <div class="stat-card">
+    <span class="stat-text">
+      <span class="stat-number"><span id="counter-projects">0</span>+</span> 
+      Real-world<br />Projects
+    </span>
+  </div>
+
+  <div class="stat-card">
+    <span class="stat-text">
+      <span class="stat-number"><span id="counter-stack">0</span>%+</span> 
+      Tech Stack<br />Mastery
+    </span>
+  </div>
+
+  <div class="stat-card">
+    <span class="stat-text">
+      <span class="stat-number"><span id="counter-learning">0</span>%</span> 
+      Continuous<br />Learning
+    </span>
+  </div>
+</div>
     </div>
   </Container>
 </section>
@@ -106,3 +113,28 @@ const t = useTranslations(lang);
     }
   }
 </style>
+
+
+<script>
+  import { CountUp } from 'countup.js';
+
+  // Function to initialize the counters
+  function initCounters() {
+    const options = {
+      enableScrollSpy: true, 
+      scrollSpyOnce: true,   
+      duration: 2.5,         
+    };
+
+    
+    new CountUp('counter-years', 3, options);
+    new CountUp('counter-projects', 20, options);
+    new CountUp('counter-stack', 90, options);
+    new CountUp('counter-learning', 100, options);
+  }
+
+  
+  document.addEventListener('astro:page-load', initCounters);
+  
+  initCounters();
+</script>

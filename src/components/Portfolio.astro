@@ -12,39 +12,45 @@ const projects = [
   {
     title: t('portfolio.project1.title'),
     description: t('portfolio.project1.description'),
-    githubUrl: '#',
-    demoUrl: '#',
+    githubUrl: 'https://github.com/JarolGabriel/equiflow',
+    demoUrl: 'https://equiflow-web.onrender.com/api/docs/',
+    image: '/assets/images/equiflowapi.png'
   },
   {
     title: t('portfolio.project2.title'),
     description: t('portfolio.project2.description'),
-    githubUrl: '#',
-    demoUrl: '#',
+    githubUrl: 'https://github.com/Flores-Bloomsy/Front-End',
+    demoUrl: 'https://bloomsandbits.devflores.xyz',
+    image: '/assets/images/bloomsandbits.png'
   },
   {
     title: t('portfolio.project3.title'),
     description: t('portfolio.project3.description'),
-    githubUrl: '#',
-    demoUrl: '#',
+    githubUrl: 'https://github.com/Flores-Bloomsy/Back-End',
+    demoUrl: 'https://apiblooms.devflores.xyz/',
+    image: '/assets/images/bloombitsbackend.png'
   },
-  {
-    title: t('portfolio.project4.title'),
-    description: t('portfolio.project4.description'),
-    githubUrl: '#',
-    demoUrl: '#',
-  },
-  {
-    title: t('portfolio.project5.title'),
-    description: t('portfolio.project5.description'),
-    githubUrl: '#',
-    demoUrl: '#',
-  },
-  {
-    title: t('portfolio.project6.title'),
-    description: t('portfolio.project6.description'),
-    githubUrl: '#',
-    demoUrl: '#',
-  },
+  // {
+  //   title: t('portfolio.project4.title'),
+  //   description: t('portfolio.project4.description'),
+  //   githubUrl: '#',
+  //   demoUrl: '#',
+  //   image: '/assets/images/equiflowapi.png'
+  // },
+  // {
+  //   title: t('portfolio.project5.title'),
+  //   description: t('portfolio.project5.description'),
+  //   githubUrl: '#',
+  //   demoUrl: '#',
+  //   image: '/assets/images/equiflowapi.png'
+  // },
+  // {
+  //   title: t('portfolio.project6.title'),
+  //   description: t('portfolio.project6.description'),
+  //   githubUrl: '#',
+  //   demoUrl: '#',
+  //   image: '/assets/images/equiflowapi.png'
+  // },
 ];
 ---
 
@@ -75,7 +81,7 @@ const projects = [
 
       <!-- Project Display -->
       <div class="grid grid-cols-2 gap-8 items-center">
-        <PortfolioImage />
+        <PortfolioImage id="project-image-desktop" src={projects[0].image} alt={projects[0].title} url={projects[0].demoUrl} />
         <div>
           <PortfolioCard 
             title={projects[0].title}
@@ -107,7 +113,7 @@ const projects = [
 </button>
 
       <div class="relative w-full max-w-md">
-        <PortfolioImage class="mb-6" />
+        <PortfolioImage id="project-image-mobile" src={projects[0].image} alt={projects[0].title} url={projects[0].demoUrl} class="mb-6" />
         <PortfolioArrows isMobile={true} />
       </div>
 
@@ -135,18 +141,20 @@ const projects = [
     font-weight: 200;
     padding: 0.75rem 1.5rem;
     border-radius: 12px;
-    border: 1px solid white;
+    border: 1px solid var(--color-text); 
+    color: var(--color-text);
     background-color: transparent;
-    color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
     flex-shrink: 0;
   }
 
+
   .tab-btn.active {
     border-color: var(--color-accent);
     color: var(--color-accent);
+    font-weight: 500;
   }
 
   .tab-btn:hover {
@@ -192,6 +200,10 @@ const projects = [
   const descMobile = document.getElementById('project-description-mobile');
   const githubBtnMobile = document.getElementById('github-btn-mobile');
   const demoBtnMobile = document.getElementById('demo-btn-mobile');
+  const imgDesktop = document.getElementById('project-image-desktop')?.querySelector('img');
+  const imgMobile = document.getElementById('project-image-mobile')?.querySelector('img');
+  const linkDesktop = document.getElementById('project-image-desktop')?.querySelector('a');
+  const linkMobile = document.getElementById('project-image-mobile')?.querySelector('a');
 
   function updateProject() {
     const project = projects[currentIndex];
@@ -201,11 +213,23 @@ const projects = [
     if (descDesktop) descDesktop.textContent = project.description;
     if (githubBtnDesktop) githubBtnDesktop.href = project.githubUrl;
     if (demoBtnDesktop) demoBtnDesktop.href = project.demoUrl;
+    if (imgDesktop) {
+      imgDesktop.src = project.image;
+      imgDesktop.alt = project.title;
+    }
+    
 
     if (titleMobile) titleMobile.textContent = project.title;
     if (descMobile) descMobile.textContent = project.description;
     if (githubBtnMobile) githubBtnMobile.href = project.githubUrl;
     if (demoBtnMobile) demoBtnMobile.href = project.demoUrl;
+    if (imgMobile) {
+      imgMobile.src = project.image;
+      imgMobile.alt = project.title;
+    }
+
+    if (linkDesktop) linkDesktop.href = project.demoUrl;
+    if (linkMobile) linkMobile.href = project.demoUrl;
 
     // Actualizar tabs
     tabButtons.forEach((btn, index) => {
