@@ -7,12 +7,42 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const testimonials = [
-  { name: t('testimonials.client1.name'), role: t('testimonials.client1.role'), content: t('testimonials.client1.testimonial'), avatar: "/assets/images/perfil_2.png" },
-  { name: t('testimonials.client2.name'), role: t('testimonials.client2.role'), content: t('testimonials.client2.testimonial'), avatar: "/assets/images/perfil_3_girl.png" },
-  { name: t('testimonials.client3.name'), role: t('testimonials.client3.role'), content: t('testimonials.client3.testimonial'), avatar: "/assets/images/perfil_Girl1.png" },
-  { name: t('testimonials.client4.name'), role: t('testimonials.client4.role'), content: t('testimonials.client4.testimonial'), avatar: "/assets/images/perfil_2.png" },
-  { name: t('testimonials.client5.name'), role: t('testimonials.client5.role'), content: t('testimonials.client5.testimonial'), avatar: "/assets/images/perfil_3_girl.png" },
+const education = [
+  { 
+    name: t('education.item1.name'), 
+    role: t('education.item1.degree'), 
+    content: t('education.item1.description'), 
+    avatar: "/assets/images/kodemia.jpeg" ,
+    link: `/${lang}/certificates/kodemia`
+  },
+  { 
+    name: t('education.item2.name'), 
+    role: t('education.item2.degree'), 
+    content: t('education.item2.description'), 
+    avatar: "/assets/images/devtalles.webp",
+    link: `/${lang}/certificates/devtalles`
+  },
+  { 
+    name: t('education.item3.name'), 
+    role: t('education.item3.degree'), 
+    content: t('education.item3.description'), 
+    avatar: "/assets/images/platzi-icon.png",
+    link: `/${lang}/certificates/platzi`
+  },
+  { 
+    name: t('education.item4.name'), 
+    role: t('education.item4.degree'), 
+    content: t('education.item4.description'), 
+    avatar: "/assets/images/udemy.png",
+    link: `/${lang}/certificates/udemy`
+  },
+  { 
+    name: t('education.item5.name'), 
+    role: t('education.item5.degree'), 
+    content: t('education.item5.description'), 
+    avatar: "/assets/images/scrum.jpeg",
+    link: `/${lang}/certificates/scrum`
+  },
 ];
 ---
 
@@ -22,19 +52,19 @@ const testimonials = [
   </div>
 
   <Container>
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-8 items-start">
       
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left z-20">
         <img src="/assets/icons/comillas_57.png" alt="quote" class="w-10 mb-6" />
         <h2 class="text-accent text-xl lg:text-xl font-menu lowercase mb-1">
-          {t('testimonials.title')}
+          {t('education.title')}
         </h2>
         <h3 class="text-heading text-2xl md:text-2xl lg:text-2xl font-heading font-medium mb-6 max-w-xs lg:max-w-sm leading-snug">
-          {t('testimonials.subtitle')}
+          {t('education.subtitle')}
         </h3>
 
         <div class="flex gap-2 mt-4 mb-8" id="dots-container">
-          {testimonials.map((_, i) => (
+          {education.map((_, i) => (
             <div class={`dot w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-[var(--color-yellow)]' : 'bg-gray-400'}`}></div>
           ))}
         </div>
@@ -51,16 +81,16 @@ const testimonials = [
           <button id="test-next-mob" class="nav-arrow pointer-events-auto bg-[var(--color-bg)] shadow-md"><ChevronRight size={16} /></button>
         </div>
 
-        <div class="overflow-hidden"> 
-          <div class="flex transition-transform duration-500 ease-out" id="testimonial-track">
-            {testimonials.map((item) => (
-              
-              <div class="flex-shrink-0 w-full lg:w-1/2 flex justify-center px-4 lg:px-0"> 
-                <TestimonialCard {...item} />
-              </div>
-            ))}
-          </div>
+        <div class="overflow-hidden ml-6"> 
+        <div class="flex transition-transform duration-500 ease-out gap-3" id="testimonial-track">
+          {education.map((item) => (
+        
+        <div class="flex-shrink-0 w-full md:w-[400px] pr-6"> 
+          <TestimonialCard {...item} />
         </div>
+          ))}
+  </div>
+</div>
       </div>
     </div>
   </Container>
@@ -110,24 +140,38 @@ const testimonials = [
 
   function update() {
     if (!track) return;
-   const isDesktop = window.innerWidth >= 1024;
-    const move = isDesktop ? 50 : 100;
-    track.style.transform = `translateX(-${currentIndex * move}%)`;
+    
+    // 1. Obtenemos el ancho de UNA tarjeta (incluyendo su espacio/gap)
+    const firstCard = track.querySelector('.flex-shrink-0') as HTMLElement;
+    if (!firstCard) return;
+    
+    // Medimos el ancho real en píxeles
+    const cardWidth = firstCard.offsetWidth; 
+    
+    // 2. Movemos el track en PÍXELES, no en porcentaje
+    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 
+    // 3. Actualizar Dots
     dots.forEach((dot, i) => {
       (dot as HTMLElement).style.backgroundColor = (i === currentIndex) ? 'var(--color-yellow)' : '#9ca3af';
     });
 
+    // 4. Lógica de botones Deshabilitados
+    const isDesktop = window.innerWidth >= 1024;
+    // En desktop, si ves 2 cards, el límite es total - 2. En móvil es total - 1.
+    const limit = isDesktop ? total - 2 : total - 1;
+
     const prevs = [btns[0], btns[2]];
     const nexts = [btns[1], btns[3]];
     
-    prevs.forEach(b => { if(b) (b as HTMLButtonElement).disabled = currentIndex === 0 });
-    nexts.forEach(b => { if(b) (b as HTMLButtonElement).disabled = isDesktop ? (currentIndex === total - 1) : (currentIndex >= total - 2) });
+    prevs.forEach(b => { if(b) (b as HTMLButtonElement).disabled = (currentIndex === 0) });
+    nexts.forEach(b => { if(b) (b as HTMLButtonElement).disabled = (currentIndex >= limit) });
   }
 
+  // Eventos Click
   [btns[1], btns[3]].forEach(b => b?.addEventListener('click', () => {
-    const isMobile = window.innerWidth < 768;
-    const limit = isMobile ? total - 1 : total - 2;
+    const isDesktop = window.innerWidth >= 1024;
+    const limit = isDesktop ? total - 2 : total - 1;
     if (currentIndex < limit) {
       currentIndex++;
       update();
@@ -140,6 +184,9 @@ const testimonials = [
       update();
     }
   }));
+
+  // Escuchar si cambian el tamaño de la ventana para recalcular el ancho
+  window.addEventListener('resize', update);
 
   update();
 </script>

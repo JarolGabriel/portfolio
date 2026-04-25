@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import CertificateItem from '../../../components/CertificateItem.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('certificates');
+  return entries.map(entry => {
+    const cleanId = entry.id.replace(/\.[^/.]+$/, ""); 
+    const [lang, slug] = cleanId.split('/');
+    return {
+      params: { lang: lang || 'es', slug: slug || 'unknown' },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { lang } = Astro.params;
+
+// Títulos dinámicos con tus variables de fuente
+const labels = {
+  es: { back: 'Volver al inicio', title: 'Certificaciones de' },
+  en: { back: 'Back to home', title: 'Certifications from' }
+};
+const t = labels[lang as keyof typeof labels] || labels.es;
+---
+
+<Layout title={`${entry.data.title} | Certificados`}>
+  <main class="min-h-screen bg-[var(--color-bg)] py-12 px-4 md:py-20 font-[var(--font-body)] transition-colors duration-300">
+    <div class="max-w-4xl mx-auto">
+      
+      <a href={`/${lang}`} class="inline-flex items-center gap-2 text-[var(--color-yellow)] hover:opacity-80 transition-all mb-10 font-[var(--font-menu)] text-lg">
+        ← {t.back}
+      </a>
+
+      <div class="flex flex-col md:flex-row items-center gap-6 mb-12 border-b border-[var(--color-border)] pb-10">
+        <div class="bg-white p-4 rounded-2xl shadow-sm dark:shadow-[0_0_20px_rgba(255,255,255,0.05)] border border-[var(--color-border)]">
+          <img src={entry.data.logo} alt={entry.data.title} class="w-20 h-20 object-contain" />
+        </div>
+        
+        <div class="text-center md:text-left">
+          <p class="text-[var(--color-accent)] font-[var(--font-heading)] text-xl tracking-wider uppercase">
+            {t.title}
+          </p>
+          <h1 class="text-5xl font-bold text-[var(--color-heading)] font-[var(--font-heading)] leading-tight">
+            {entry.data.title}
+          </h1>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        {entry.data.certificates.map((cert: any) => (
+          <div class="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-1 hover:border-[var(--color-yellow)] transition-all duration-300 shadow-sm hover:shadow-md">
+             <CertificateItem data={cert} />
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </main>
+</Layout>

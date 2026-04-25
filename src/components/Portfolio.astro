@@ -64,9 +64,20 @@ const projects = [
   </div>
 
   <Container>
+
+         <div class="hidden md:grid md:grid-cols-3 md:items-center w-full mb-5">
+          <h2 class="text-accent text-2xl font-menu">
+            {t('portfolio.title')}
+          </h2>
+          <p class="text-heading text-base leading-relaxed font-light text-left md:col-start-3 md:max-w-xs">
+            {t('portfolio.description')}
+          </p>
+      </div> 
     
     <!-- Desktop Layout -->
     <div class="hidden md:block">
+
+  
       
       <!-- Tabs Container -->
       <div class="mb-8 overflow-hidden">
@@ -108,9 +119,14 @@ const projects = [
         </p>
       </div>
 
-      <button class="featured-btn" id="current-project-btn-mobile">
-  {projects[0].title}
-</button>
+      <a 
+      href={projects[0].githubUrl} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="featured-btn" 
+      id="current-project-btn-mobile">
+        {projects[0].title}
+      </a>
 
       <div class="relative w-full max-w-md">
         <PortfolioImage id="project-image-mobile" src={projects[0].image} alt={projects[0].title} url={projects[0].demoUrl} class="mb-6" />
@@ -125,7 +141,7 @@ const projects = [
         githubText={t('portfolio.btn.github')}
         demoText={t('portfolio.btn.demo')}
         isMobile={true}
-      />
+      /> 
 
     </div>
 
@@ -163,7 +179,7 @@ const projects = [
 
   .featured-btn {
     font-family: var(--font-menu);
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     padding: 0.75rem 2rem;
     border-radius: 12px;

@@ -10,7 +10,7 @@ export const ui = {
     "nav.experience": "Experiencia",
     "nav.service": "Servicios",
     "nav.portfolio": "Portafolio",
-    "nav.testimonials": "Testimonios",
+    "nav.testimonials": "Educacion",
 
     "hero.greeting": "Hola, soy",
     "hero.name": "JAROL GABRIEL",
@@ -122,33 +122,34 @@ export const ui = {
     "portfolio.btn.github": "Github",
     "portfolio.btn.demo": "Demo",
 
-    "testimonials.title": "Testimonios",
-    "testimonials.subtitle": "Success Stories from Happy Clients",
+    "education.title": "Formación Técnica y Certificados",
+    "education.subtitle":
+      "Constantemente evolucionando a través del aprendizaje especializado.",
 
-    "testimonials.client1.name": "William Jones",
-    "testimonials.client1.role": "CEO, TechStart",
-    "testimonials.client1.testimonial":
-      "Working with Nelly Dean was a dream. The designs were clean, unique, and perfectly on-brand. I'll definitely be back for more!",
+    "education.item1.name": "Kodemia",
+    "education.item1.degree": "Bootcamp Full Stack JavaScript",
+    "education.item1.description":
+      "Programa intensivo de 24 semanas centrado en aplicaciones listas para producción. Desarrollé soluciones web integrales utilizando el stack MERN, implementando APIs RESTful y arquitecturas de frontend modernas.",
 
-    "testimonials.client2.name": "Sibyl Vane",
-    "testimonials.client2.role": "Product Manager, InnovateCo",
-    "testimonials.client2.testimonial":
-      "Outstanding work! The project was delivered on time and exceeded all expectations. Highly recommended for any web development needs.",
+    "education.item2.name": "DevTalles",
+    "education.item2.degree": "Programa Avanzado de Desarrollo Web",
+    "education.item2.description":
+      "Especializado en frameworks modernos como Next.js, Astro y Node.js. Enfoque en alto rendimiento e implementación de TypeScript para garantizar escalabilidad y calidad de código de nivel empresarial.",
 
-    "testimonials.client3.name": "Dorian Gray",
-    "testimonials.client3.role": "Founder, ArtTech",
-    "testimonials.client3.testimonial":
-      "Professional, creative, and reliable. The attention to detail and communication throughout the project was exceptional.",
+    "education.item3.name": "Platzi",
+    "education.item3.degree": "Full Stack Web Development",
+    "education.item3.description":
+      "Enfocado en el dominio de Python (Django) y Node.js para arquitectura de backend, junto con la creación de interfaces de usuario responsivas con React y gestión de bases de datos.",
 
-    "testimonials.client4.name": "Basil Hallward",
-    "testimonials.client4.role": "CTO, DevSolutions",
-    "testimonials.client4.testimonial":
-      "Amazing developer! Clean code, modern tech stack, and seamless deployment. Will definitely work together again.",
+    "education.item4.name": "Udemy",
+    "education.item4.degree": "TypeScript: La Guía Completa",
+    "education.item4.description":
+      "Dominio de tipos avanzados, programación orientada a objetos, genéricos y configuración de herramientas (tsconfig) para escribir código más confiable, escalable y mantenible.",
 
-    "testimonials.client5.name": "Lord Henry",
-    "testimonials.client5.role": "Marketing Director, GrowthLab",
-    "testimonials.client5.testimonial":
-      "Transformed our digital presence completely. The website is fast, beautiful, and exactly what we needed to scale our business.",
+    "education.item5.name": "ScrumStudy",
+    "education.item5.degree": "Scrum Fundamentals Certified (SFC™)",
+    "education.item5.description":
+      "Certificación que valida el conocimiento fundamental del marco de trabajo Scrum, incluyendo sus roles, eventos y artefactos. Demuestra la capacidad para trabajar en equipos ágiles, aplicando principios enfocados en la colaboración, adaptabilidad y mejora continua.",
 
     // contact
     "contact.title": "¡Hablemos!",
@@ -172,7 +173,7 @@ export const ui = {
     "nav.experience": "Experience",
     "nav.service": "Service",
     "nav.portfolio": "Portfolio",
-    "nav.testimonials": "Testimonials",
+    "nav.testimonials": "Education",
 
     "hero.greeting": "Hello, I'm",
     "hero.name": "JAROL GABRIEL",
@@ -282,33 +283,33 @@ export const ui = {
     "portfolio.btn.github": "Github",
     "portfolio.btn.demo": "Demo",
 
-    "testimonials.title": "Testimonials",
-    "testimonials.subtitle": "Success Stories from Happy Clients",
+    "education.title": "Technical Training & Certificates",
+    "education.subtitle": "Constantly evolving through specialized learning.",
 
-    "testimonials.client1.name": "William Jones",
-    "testimonials.client1.role": "CEO, TechStart",
-    "testimonials.client1.testimonial":
-      "Working with Nelly Dean was a dream. The designs were clean, unique, and perfectly on-brand. I'll definitely be back for more!",
+    "education.item1.name": "Kodemia",
+    "education.item1.degree": "Full Stack JavaScript Bootcamp",
+    "education.item1.description":
+      "Intensive 24-week program focused on production-ready applications. Developed comprehensive web solutions using the MERN stack, implementing RESTful APIs and modern frontend architectures.",
 
-    "testimonials.client2.name": "Sibyl Vane",
-    "testimonials.client2.role": "Product Manager, InnovateCo",
-    "testimonials.client2.testimonial":
-      "Outstanding work! The project was delivered on time and exceeded all expectations. Highly recommended for any web development needs.",
+    "education.item2.name": "DevTalles",
+    "education.item2.degree": "Advanced Web Development Program",
+    "education.item2.description":
+      "Specialized in modern frameworks like Next.js, Astro, and Node.js. Focused on high performance and TypeScript implementation to ensure scalability and enterprise-level code quality.",
 
-    "testimonials.client3.name": "Dorian Gray",
-    "testimonials.client3.role": "Founder, ArtTech",
-    "testimonials.client3.testimonial":
-      "Professional, creative, and reliable. The attention to detail and communication throughout the project was exceptional.",
+    "education.item3.name": "Platzi",
+    "education.item3.degree": "Full Stack Web Development",
+    "education.item3.description":
+      "Focused on mastering Python (Django) and Node.js for backend architecture, along with building responsive user interfaces with React and database management.",
 
-    "testimonials.client4.name": "Basil Hallward",
-    "testimonials.client4.role": "CTO, DevSolutions",
-    "testimonials.client4.testimonial":
-      "Amazing developer! Clean code, modern tech stack, and seamless deployment. Will definitely work together again.",
+    "education.item4.name": "Udemy",
+    "education.item4.degree": "TypeScript: The Complete Guide",
+    "education.item4.description":
+      "Mastery of advanced types, object-oriented programming, generics, and tooling configuration (tsconfig) to write more reliable, scalable, and maintainable code.",
 
-    "testimonials.client5.name": "Lord Henry",
-    "testimonials.client5.role": "Marketing Director, GrowthLab",
-    "testimonials.client5.testimonial":
-      "Transformed our digital presence completely. The website is fast, beautiful, and exactly what we needed to scale our business.",
+    "education.item5.name": "ScrumStudy",
+    "education.item5.degree": "Scrum Fundamentals Certified (SFC™)",
+    "education.item5.description":
+      "Certification validating foundational knowledge of the Scrum framework, including its roles, events, and artifacts. Demonstrates the ability to work within agile teams, applying principles focused on collaboration, adaptability, and continuous improvement.",
 
     // contact
     "contact.title": "Let's Talk!",
