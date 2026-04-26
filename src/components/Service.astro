@@ -66,7 +66,7 @@ const services = [
 
       <!-- Right Column: 2x2 Grid of Cards -->
       <div class="grid grid-cols-2 gap-4">
-        {services.map((service) => (
+        {services.map((service, index) => (
           <div class="service-card">
             <div class="mb-3">
               <span class="service-number">{service.number}</span>
@@ -76,20 +76,34 @@ const services = [
               {service.description}
             </p>
             <div class="flex gap-3">
-              <Button 
+              {/* <Button 
                 variant="primary" 
                 text={t('services.btn.hire')}
                 href="#contact"
                 class="flex-1 !text-xs !py-2.5 md:mt-3"
-              />
-              <Button 
+              /> */}
+              {/* <Button 
                 variant="accent2" 
                 text={t('services.btn.details')}
                 class="flex-1 !text-xs !py-2.5 md:mt-3"
-              />
-            </div>
-          </div>
-        ))}
+              /> */}
+ 
+          <Button 
+            variant="accent2" 
+            text={t('services.btn.details')}
+            class="flex-1 !text-xs !py-2.5 md:mt-3 detail-btn"
+            id={`btn-${index}`} 
+            data-service={
+              index === 0 ? "frontend" : 
+              index === 1 ? "backend" : 
+              index === 2 ? "fullstack" : 
+              "optimizacion"
+            }
+          />
+         </div>
+       </div>
+                    
+      ))}
       </div>
     </div>
 
@@ -120,7 +134,7 @@ const services = [
       <div class="relative w-full max-w-sm">
         <div class="overflow-hidden">
           <div class="carousel-track flex transition-transform duration-300 ease-out" id="carousel-track">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <div class="carousel-slide flex-shrink-0 w-full">
                 <div class="service-card-mobile">
                   <div class="mb-4">
@@ -130,7 +144,7 @@ const services = [
                   <p class="service-description-mobile mb-6">
                     {service.description}
                   </p>
-                  <div class="flex gap-3">
+                  {/* <div class="flex gap-3">
                     <Button 
                       variant="primary" 
                       text={t('services.btn.hire')}
@@ -142,7 +156,19 @@ const services = [
                       text={t('services.btn.details')}
                       class="flex-1 !text-[12px] !py-3"
                     />
-                  </div>
+                  </div> */}
+                    <Button 
+            variant="accent2" 
+            text={t('services.btn.details')}
+            class="flex-1 !text-xs !py-2.5 md:mt-3 detail-btn mt-4"
+            id={`btn-${index}`} 
+            data-service={
+              index === 0 ? "frontend" : 
+              index === 1 ? "backend" : 
+              index === 2 ? "fullstack" : 
+              "optimizacion"
+            }
+          />
                 </div>
               </div>
             ))}
@@ -346,4 +372,42 @@ const services = [
   });
 
   updateCarousel();
+
+
+  
+</script>
+
+<script>
+  const initButtons = () => {
+    
+    const buttons = document.querySelectorAll('[data-service]');
+    
+    console.log("Botones detectados:", buttons.length); // Verás esto en la consola F12
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        
+        e.preventDefault();
+        e.stopPropagation();
+
+        const id = btn.getAttribute('data-service');
+        console.log("Click en servicio:", id);
+
+        // @ts-ignore
+        if (window.openServiceModal) {
+          // @ts-ignore
+          window.openServiceModal(id);
+        } else {
+          console.error("El modal no está listo aún");
+        }
+      });
+    });
+  };
+
+  
+  initButtons();
+  
+  
+  document.addEventListener('astro:page-load', initButtons);
+  document.addEventListener('astro:after-swap', initButtons);
 </script>

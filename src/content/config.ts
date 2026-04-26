@@ -17,4 +17,15 @@ const certificates = defineCollection({
   }),
 });
 
-export const collections = { certificates };
+const services = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    projectTitle: z.string().optional(),
+    projectTechs: z.array(z.string()).optional(),
+    image: z.string().optional(),
+    link: z.string().url().optional(),
+    github: z.string().url().optional(),
+  }),
+});
+
+export const collections = { certificates, services };

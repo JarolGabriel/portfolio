@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { lang } = Astro.params;
 
-// Títulos dinámicos con tus variables de fuente
+
 const labels = {
   es: { back: 'Volver al inicio', title: 'Certificaciones de' },
   en: { back: 'Back to home', title: 'Certifications from' }
@@ -27,7 +27,7 @@ const t = labels[lang as keyof typeof labels] || labels.es;
 ---
 
 <Layout title={`${entry.data.title} | Certificados`}>
-  <main class="min-h-screen bg-[var(--color-bg)] py-12 px-4 md:py-20 font-[var(--font-body)] transition-colors duration-300">
+  <main class="min-h-screen bg-[var(--color-bg)] py-12 px-4 md:py-20 font-[var(--font-body)] transition-colors duration-300 mt-6 sm:mt-0">
     <div class="max-w-4xl mx-auto">
       
       <a href={`/${lang}`} class="inline-flex items-center gap-2 text-[var(--color-yellow)] hover:opacity-80 transition-all mb-10 font-[var(--font-menu)] text-lg">
@@ -52,7 +52,7 @@ const t = labels[lang as keyof typeof labels] || labels.es;
       <div class="space-y-8">
         {entry.data.certificates.map((cert: any) => (
           <div class="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-1 hover:border-[var(--color-yellow)] transition-all duration-300 shadow-sm hover:shadow-md">
-             <CertificateItem data={cert} />
+             <CertificateItem data={cert} institutionLogo={entry.data.logo} />
           </div>
         ))}
       </div>

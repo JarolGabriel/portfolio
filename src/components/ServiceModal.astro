@@ -1,0 +1,155 @@
+---
+import { getCollection } from 'astro:content';
+import { getLangFromUrl } from '../i18n/utils';
+import Button from './Button.astro';
+
+const lang = getLangFromUrl(Astro.url);
+
+const allServices = await getCollection('services', ({ id }) => {
+  return id.startsWith(`${lang}/`);
+});
+
+
+const servicesData = allServices.map(s => ({
+  id: s.id,
+  title: s.data.title,
+  projectTitle: s.data.projectTitle,
+  image: s.data.image,
+  link: s.data.link,
+  github: s.data.github,
+  body: s.body 
+}));
+---
+
+<div id="service-modal-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden items-start justify-center p-4 overflow-y-auto">
+  <div id="service-modal-content" class="bg-bg-card border border-accent2/30 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 my-8">
+    
+<div id="modal-image-container" class="w-full bg-slate-950 p-4 sm:p-6 hidden overflow-hidden rounded-t-3xl border-b border-accent2/10">
+    <div class="relative w-full aspect-video max-h-[300px] sm:max-h-[400px] mx-auto overflow-hidden rounded-xl bg-slate-900/50 shadow-inner">
+        <img 
+            id="modal-image" 
+            src="" 
+            alt="" 
+           
+            class="w-full h-full object-contain" 
+        />
+    </div>
+</div>
+
+    <div class="p-6 sm:p-8">
+      <h2 id="modal-title" class="text-2xl sm:text-3xl font-heading text-accent mb-2"></h2>
+      <h4 id="modal-project" class="text-accent2 text-sm sm:text-base font-menu mb-4 uppercase tracking-wider"></h4>
+      
+      <div 
+  id="modal-description" 
+  class="text-slate-600 dark:text-slate-400 font-body text-[13px] sm:text-sm leading-relaxed mb-8 whitespace-pre-line font-light tracking-wide"
+>
+</div>
+
+      <div class="flex flex-wrap gap-4">
+        <div id="modal-link-container" class="hidden">
+            <a id="modal-link-href" href="" target="_blank">
+                <Button text="Ver Proyecto" variant="primary" />
+            </a>
+        </div>
+        <div id="modal-github-container" class="hidden">
+            <a id="modal-github-href" href="" target="_blank">
+                <Button text="GitHub" variant="secondary" />
+            </a>
+        </div>
+        <button 
+  id="close-modal" 
+  class="ml-auto text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent text-xs font-menu transition-colors cursor-pointer uppercase tracking-widest"
+>
+  Cerrar
+</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+
+    #modal-description strong {
+  color: var(--color-accent);
+  font-weight: 500; 
+}
+
+#modal-description li {
+  margin-top: 0.25rem; 
+  margin-bottom: 0.25rem;
+}
+</style>
+
+<script define:vars={{ servicesData }}>
+
+    
+  const overlay = document.getElementById('service-modal-overlay');
+  const content = document.getElementById('service-modal-content');
+  const closeBtn = document.getElementById('close-modal');
+  
+  window.openServiceModal = (serviceId) => {
+   
+    const service = servicesData.find(s => s.id.includes(serviceId));
+    
+    if (!service) return;
+
+    
+    document.getElementById('modal-title').innerText = service.title;
+    document.getElementById('modal-project').innerText = service.projectTitle || '';
+
+    let processedBody = service.body
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') 
+    .replace(/^- (.*$)/gim, '• $1');
+    
+    const descElement = document.getElementById('modal-description');
+    descElement.innerHTML = processedBody;
+    
+    // document.getElementById('modal-description').textContent = service.body;
+
+    
+    const imgContainer = document.getElementById('modal-image-container');
+    const modalImg = document.getElementById('modal-image');
+    if (service.image) {
+        modalImg.src = service.image;
+        imgContainer.classList.remove('hidden');
+    } else {
+        imgContainer.classList.add('hidden');
+    }
+
+    
+    const linkCont = document.getElementById('modal-link-container');
+    if (service.link) {
+        document.getElementById('modal-link-href').href = service.link;
+        linkCont.classList.remove('hidden');
+    } else { linkCont.classList.add('hidden'); }
+
+    const githubCont = document.getElementById('modal-github-container');
+    if (service.github) {
+        document.getElementById('modal-github-href').href = service.github;
+        githubCont.classList.remove('hidden');
+    } else { githubCont.classList.add('hidden'); }
+
+    
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+    setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+    }, 10);
+  };
+
+  const closeModal = () => {
+    content.classList.add('scale-95', 'opacity-0');
+    setTimeout(() => {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+    }, 200);
+  };
+
+  closeBtn?.addEventListener('click', closeModal);
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+</script>
