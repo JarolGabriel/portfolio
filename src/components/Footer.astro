@@ -22,6 +22,22 @@ const services = [
   { label: "Full Stack Development", href: "#" },
   { label: "Performance Optimization", href: "#" },
 ];
+
+
+const labels = {
+  es: { 
+    title: "Copiado", 
+    text: 'Email copiado al portapapeles.'
+    
+  },
+  en: { 
+    title:'Copied!', 
+    text: 'Email copied to clipboard.',
+  }
+
+};
+
+const tModal = labels[lang as keyof typeof labels] || labels.es;
 ---
 
 <footer class="relative pt-20 pb-10 overflow-hidden bg-[var(--color-bg)] " id="contact">
@@ -198,7 +214,7 @@ const services = [
 
 <script>
   import Swal from 'sweetalert2';
-
+  
   const copyBtn = document.getElementById('copy-email');
   const user = "jarolgabriel.jimenez70";
   const domain = "gmail.com";
@@ -223,4 +239,6 @@ const services = [
     });
   });
 </script>
+
+
 

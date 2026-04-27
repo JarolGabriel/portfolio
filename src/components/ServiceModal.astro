@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import { getLangFromUrl } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import Button from './Button.astro';
+
 
 const lang = getLangFromUrl(Astro.url);
 
@@ -19,6 +20,19 @@ const servicesData = allServices.map(s => ({
   github: s.data.github,
   body: s.body 
 }));
+
+const labels = {
+  es: { 
+    viewProject: 'Ver Proyecto', 
+    close: 'Cerrar' 
+  },
+  en: { 
+    viewProject: 'View Project', 
+    close: 'Close' 
+  }
+};
+
+const tModal = labels[lang as keyof typeof labels] || labels.es;
 ---
 
 <div id="service-modal-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden items-start justify-center p-4 overflow-y-auto">
@@ -49,20 +63,20 @@ const servicesData = allServices.map(s => ({
       <div class="flex flex-wrap gap-4">
         <div id="modal-link-container" class="hidden">
             <a id="modal-link-href" href="" target="_blank">
-                <Button text="Ver Proyecto" variant="primary" />
+                <Button text={tModal.viewProject} variant="primary" />
             </a>
         </div>
         <div id="modal-github-container" class="hidden">
             <a id="modal-github-href" href="" target="_blank">
-                <Button text="GitHub" variant="secondary" />
+                <Button text="GitHub" variant="accent2" />
             </a>
         </div>
         <button 
-  id="close-modal" 
-  class="ml-auto text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent text-xs font-menu transition-colors cursor-pointer uppercase tracking-widest"
->
-  Cerrar
-</button>
+        id="close-modal" 
+        class="ml-auto text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent text-xs font-menu transition-colors cursor-pointer uppercase tracking-widest"
+      >
+        {tModal.close}
+      </button>
       </div>
     </div>
   </div>
