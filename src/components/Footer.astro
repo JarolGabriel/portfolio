@@ -23,6 +23,13 @@ const services = [
   { label: "Performance Optimization", href: "#" },
 ];
 
+const servicesLinks = [
+  { label: t("services.item1.title"), slug: "frontend" },
+  { label: t("services.item2.title"), slug: "backend" },
+  { label: t("services.item3.title"), slug: "fullstack" },
+  { label: t("services.item4.title"), slug: "optimizacion" },
+];
+
 
 const labels = {
   es: { 
@@ -93,15 +100,20 @@ const tModal = labels[lang as keyof typeof labels] || labels.es;
 
         <div>
           <h4 class="text-accent font-menu mb-6 text-lg lowercase">{t('footer.services')}</h4>
+
           <ul class="flex flex-col gap-3">
-            {services.map(service => (
+            {servicesLinks.map(service => (
               <li>
-                <a href={service.href} class="text-gray-400 hover:text-accent transition-colors text-sm md:text-xm">
-                  {service.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+                <a 
+                  href="#service" 
+                  data-trigger-service={service.slug} 
+                  class="footer-service-link text-gray-400 hover:text-accent transition-colors text-sm"
+                >
+        {service.label}
+              </a>
+            </li>
+          ))}
+        </ul>
         </div>
 
 <div>
@@ -135,13 +147,7 @@ const tModal = labels[lang as keyof typeof labels] || labels.es;
         <p class="ml-2">GitHub</p>
       </a>
     </li>
-        <!-- <li>
-      <a href="https://wa.me/001234567" target="_blank" rel="noopener noreferrer" 
-         class="social-link flex items-center gap-3" aria-label="WhatsApp">
-        <MessageCircleMore size={24} strokeWidth={1.5} />
-        <p class="ml-2">WhatsApp</p>
-      </a>
-    </li> -->
+      
     <li>
   <a href="https://x.com/GKJarol" target="_blank" rel="noopener noreferrer" 
      class="social-link flex items-center gap-3 group" aria-label="X">
@@ -236,6 +242,26 @@ const tModal = labels[lang as keyof typeof labels] || labels.es;
       background: '#0a1f1f',
       color: '#ffffff',
       iconColor: '#26cc6b'
+    });
+  });
+</script>
+
+<script>
+  const footerLinks = document.querySelectorAll('.footer-service-link');
+
+  footerLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const serviceSlug = link.getAttribute('data-trigger-service');
+      
+      
+      const realButton = document.querySelector(`[data-service="${serviceSlug}"]`);
+      
+      if (realButton) {
+        
+        setTimeout(() => {
+          (realButton as HTMLElement).click();
+        }, 100); 
+      }
     });
   });
 </script>
