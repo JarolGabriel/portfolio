@@ -39,4 +39,16 @@ certificates:
     description:
       "Comprehensive Python training, covering everything from core fundamentals
       to complex data structures."
+
+  - title: "Advanced Docker & Container Orchestration"
+    date: "May 2026"
+    credentialId: "26921899-3867-4ec2-85f8-a7b96beef324-de3b6be7-6308-4b95-8c56-ad59933ce1cf"
+    skills:
+      "Docker Swarm, Container Orchestration, CI/CD, Cloud Deployment (Azure),
+      Image Optimization"
+    link: "https://platzi.com/p/Jarolgabriel/curso/11322-docker-avanzado/diploma/detalle/"
+    description:
+      "Mastery of advanced containerization techniques, including orchestration
+      with Docker Swarm, automated CI/CD pipelines with GitHub Actions, and
+      deployment to Microsoft Azure."
 ---

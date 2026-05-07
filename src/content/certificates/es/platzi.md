@@ -39,4 +39,16 @@ certificates:
     description:
       "Formación completa en Python, abarcando desde los fundamentos esenciales
       hasta estructuras de datos complejas."
+
+  - title: "Docker Avanzado y Orquestación"
+    date: "Mayo 2026"
+    credentialId: "26921899-3867-4ec2-85f8-a7b96beef324-de3b6be7-6308-4b95-8c56-ad59933ce1cf"
+    skills:
+      "Docker Swarm, Orquestación, CI/CD, Despliegue en la Nube (Azure),
+      Optimización de Imágenes"
+    link: "https://platzi.com/p/Jarolgabriel/curso/11322-docker-avanzado/diploma/detalle/"
+    description:
+      "Dominio de técnicas avanzadas de contenedores, incluyendo orquestación
+      con Docker Swarm, flujos automatizados de CI/CD con GitHub Actions y
+      despliegue profesional en Microsoft Azure."
 ---
