@@ -151,6 +151,11 @@ export const ui = {
     "education.item5.description":
       "Certificación que valida el conocimiento fundamental del marco de trabajo Scrum, incluyendo sus roles, eventos y artefactos. Demuestra la capacidad para trabajar en equipos ágiles, aplicando principios enfocados en la colaboración, adaptabilidad y mejora continua.",
 
+    "education.item6.name": "Google Cloud",
+    "education.item6.degree": "Google Cloud Essentials",
+    "education.item6.description":
+      "Certificación enfocada en infraestructura base de la nube. Incluye experiencia práctica con Google Compute Engine, Kubernetes Engine (GKE) y servicios de red como Load Balancers, garantizando el despliegue de aplicaciones escalables y de alta disponibilidad.",
+
     // contact
     "contact.title": "¡Hablemos!",
     "contact.name": "Nombre",
@@ -310,6 +315,11 @@ export const ui = {
     "education.item5.degree": "Scrum Fundamentals Certified (SFC™)",
     "education.item5.description":
       "Certification validating foundational knowledge of the Scrum framework, including its roles, events, and artifacts. Demonstrates the ability to work within agile teams, applying principles focused on collaboration, adaptability, and continuous improvement.",
+
+    "education.item6.name": "Google Cloud",
+    "education.item6.degree": "Google Cloud Essentials",
+    "education.item6.description":
+      "Certification focused on foundational cloud infrastructure. Includes hands-on experience with Google Compute Engine, Kubernetes Engine (GKE), and network services like Load Balancers, ensuring scalable and high-availability application deployment.",
 
     // contact
     "contact.title": "Let's Talk!",
