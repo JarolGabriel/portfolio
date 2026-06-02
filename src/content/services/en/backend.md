@@ -2,7 +2,7 @@
 title: "Backend Development"
 projectTitle: "EquiFlow - Financial Management API"
 image: "/assets/images/equiflowapi.png"
-link: "https://equiflow-axd3d2d8h0ajfze0.westus3-01.azurewebsites.net/api/docs/"
+link: "https://equiflow-api-fufmc2gsgherd0d4.westus3-01.azurewebsites.net/api/docs/"
 github: "https://github.com/JarolGabriel/equiflow"
 ---
 
