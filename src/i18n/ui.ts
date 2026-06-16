@@ -89,6 +89,11 @@ export const ui = {
     "portfolio.tab.api": "APIs",
 
     // Proyectos
+    "portfolio.project0.title": "Neon Shop",
+    "portfolio.project0.description":
+      "Neon Shop es una plataforma e-commerce full-stack para un taller venezolano de letreros de neón flex y LED. Incluye catálogo con filtros avanzados, carrito persistente, personalizador de texto neón en tiempo real, showroom comunitario, panel de administración completo y arquitectura multi-instancia (white-label). El checkout fluye por WhatsApp con correos transaccionales vía Resend. Construida con Next.js 16, React 19, TypeScript, Tailwind CSS v4, Supabase y 43 API Routes propias. ⚡ Proyecto en producción — operado actualmente por el negocio cliente.",
+    "portfolio.project0.category": "fullstack",
+
     "portfolio.project1.title": "EquiFlow API",
     "portfolio.project1.description":
       "EquiFlow: API de Gestión de Finanzas Personales EquiFlow es una API RESTful robusta diseñada para ayudar a los usuarios a realizar un seguimiento de su salud financiera, gestionar cuentas y monitorear transacciones con precisión. Desarrollada como un proyecto de portafolio profesional, se centra en una arquitectura limpia, autenticación segura y un diseño de base de datos escalable.",
@@ -254,6 +259,12 @@ export const ui = {
     "portfolio.tab.dashboard": "Dashboards",
     "portfolio.tab.ecommerce": "E-commerce",
     "portfolio.tab.api": "APIs",
+
+    //project
+    "portfolio.project0.title": "Neon Shop",
+    "portfolio.project0.description":
+      "Neon Shop is a full-stack e-commerce platform built for a Venezuelan neon flex and LED sign workshop. It features an advanced product catalog with filters, persistent cart, real-time neon text customizer, community showroom, full admin panel, and a multi-instance white-label architecture. Checkout flows through WhatsApp with transactional emails via Resend. Built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, Supabase, and 43 custom API Routes. ⚡ Live in production — currently operated by the client.",
+    "portfolio.project0.category": "fullstack",
 
     "portfolio.project1.title": "EquiFlow API",
     "portfolio.project1.description":
