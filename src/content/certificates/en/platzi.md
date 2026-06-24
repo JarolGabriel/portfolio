@@ -22,6 +22,17 @@ certificates:
       "Mastered the Django framework to build scalable web applications
       implementing MVT architecture and ORM."
 
+  - title: "FastAPI Course: Building Efficient APIs and Database Integration"
+    date: "Jun 2026"
+    credentialId: "30ed58a2-057c-4867-974d-d86829a6eb51-e08b8ab2-7546-4a63-adf6-bc8c4616f857"
+    skills: "FastAPI, Pydantic, SQLModel, REST APIs, CRUD, APIRouter"
+    link: "https://platzi.com/p/Jarolgabriel/curso/11190-fastapi/diploma/detalle/"
+    description:
+      "Mastered the development of modern, high-performance REST APIs using
+      FastAPI. Implemented automatic data validation with Pydantic, managed
+      relational databases via SQLModel ORM, and structured scalable
+      applications using APIRouter."
+
   - title: "PostgreSQL Database Administration & SQL Mastery"
     date: "Mar 2026"
     credentialId: "2ef6ba05-34f8-492b-8552-0579231c9ec9"

@@ -20,6 +20,19 @@ certificates:
     description:
       "Dominio del framework Django para construir aplicaciones web escalables
       implementando arquitectura MVT y el uso del ORM."
+
+  - title:
+      "Curso de FastAPI: Creación de APIs Eficientes y Conexión a Bases de Datos"
+    date: "Jun 2026"
+    credentialId: "30ed58a2-057c-4867-974d-d86829a6eb51-e08b8ab2-7546-4a63-adf6-bc8c4616f857"
+    skills: "FastAPI, Pydantic, SQLModel, REST APIs, CRUD, APIRouter"
+    link: "https://platzi.com/p/Jarolgabriel/curso/11190-fastapi/diploma/detalle/"
+    description:
+      "Dominé el desarrollo de APIs REST modernas y de alto rendimiento
+      utilizando FastAPI. Implementé validaciones automáticas de datos con
+      Pydantic, gestioné bases de datos relacionales mediante el ORM SQLModel y
+      estructuré aplicaciones escalables utilizando APIRouter."
+
   - title: "Administración de Bases de Datos PostgreSQL y Maestría en SQL"
     date: "Mar 2026"
     credentialId: "2ef6ba05-34f8-492b-8552-0579231c9ec9"
