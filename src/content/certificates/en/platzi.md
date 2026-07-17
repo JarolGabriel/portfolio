@@ -13,6 +13,17 @@ certificates:
       "Advanced training in Django REST Framework (DRF), mastering the creation
       of scalable and secure APIs."
 
+  - title: "Python Unit Testing Course"
+    date: "Jul 2026"
+    credentialId: "70fa78f4-922e-40f7-bedd-8593340c33c2-62474543-1f81-494f-bda8-0d67dfb2cb0e"
+    skills:
+      "Test Automation, PyTest, Unittest, Mocks, Code Coverage, CI/CD with
+      GitHub Actions, Data Generation with Faker"
+    link: "https://platzi.com/p/Jarolgabriel/curso/10662-unit-testing-python/diploma/detalle/"
+    description:
+      "Specialized training in creating automated unit tests, ensuring software
+      quality through mocking, parameterization, and code coverage analysis."
+
   - title: "Django Course: Building Full-Stack Web Applications"
     date: "Mar 2026"
     credentialId: "c81e595f-f54d-485f-ae30-d5c44e72ed26"

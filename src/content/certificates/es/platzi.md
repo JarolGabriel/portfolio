@@ -12,6 +12,19 @@ certificates:
     description:
       "Formación avanzada en Django REST Framework (DRF), dominando la creación
       de APIs escalables y seguras."
+
+  - title: "Curso de Unit Testing en Python"
+    date: "Jul 2026"
+    credentialId: "70fa78f4-922e-40f7-bedd-8593340c33c2-62474543-1f81-494f-bda8-0d67dfb2cb0e"
+    skills:
+      "Automatización de pruebas, PyTest, Unittest, Mocks, Coverage, CI/CD con
+      GitHub Actions, Generación de datos con Faker"
+    link: "https://platzi.com/p/Jarolgabriel/curso/10662-unit-testing-python/diploma/detalle/"
+    description:
+      "Formación especializada en la creación de pruebas unitarias
+      automatizadas, asegurando la calidad del software mediante mocks,
+      parametrización y medición de cobertura."
+
   - title: "Curso de Django: Creación de Aplicaciones Web Full-Stack"
     date: "Mar 2026"
     credentialId: "c81e595f-f54d-485f-ae30-d5c44e72ed26"
