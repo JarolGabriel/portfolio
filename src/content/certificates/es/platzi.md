@@ -77,4 +77,13 @@ certificates:
       "Dominio de técnicas avanzadas de contenedores, incluyendo orquestación
       con Docker Swarm, flujos automatizados de CI/CD con GitHub Actions y
       despliegue profesional en Microsoft Azure."
+
+  - title: "Curso de Frontend Developer"
+    date: "Jul 2022"
+    credentialId: "79b1635e-9a14-443b-871b-62050a5ea19e"
+    skills: "HTML5, CSS3, Responsive Design, Flexbox, Grid, JavaScript"
+    link: "https://platzi.com/p/Jarolgabriel/curso/2467-course/diploma/detalle/"
+    description:
+      "Fundamentos del desarrollo web frontend, enfocados en la construcción de
+      interfaces modernas, adaptables y funcionales."
 ---
